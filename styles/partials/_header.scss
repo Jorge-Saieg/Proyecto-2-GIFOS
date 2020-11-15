@@ -1,0 +1,129 @@
+.logo-mobile {
+    margin: 34px 22px;
+    width: 48.8px;
+    height: 48.8px;
+    font-family: "roboto", sans-serif;
+}
+.logo-desktop {
+    display: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 95px;
+    border-top: solid 5px #572ee5;
+}
+
+.checkbox-menu {
+    display: none;
+}
+.menu {
+    display: none;
+}
+
+.close-menu {
+    display: none;
+}
+
+input:checked ~ .open-menu {
+    display: none;
+}
+
+input:checked ~ .menu,
+input:checked ~ .close-menu {
+    display: block;
+}
+
+.open-menu,
+.close-menu {
+    margin: 47px 27px;
+}
+
+.menu {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(87, 46, 229, 0.9);
+    position: absolute;
+    top: 100px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 15px;
+    z-index: 20;
+    li {
+        list-style: none;
+        line-height: 48px;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+    hr {
+        width: 41px;
+        height: 0.1px;
+        margin: auto;
+        border: 1px solid #ffffff;
+        background-color: #ffffff;
+        opacity: 0.5;
+    }
+    .crear-gifo {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .nav {
+        height: 90px;
+    }
+
+    .logo-desktop {
+        display: block;
+        height: 59.1px;
+        width: 59.1px;
+        margin-left: 156px;
+        margin-top: 18px;
+    }
+    .logo-mobile {
+        display: none;
+    }
+
+    .open-menu {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px;
+        background-color: white;
+        position: relative;
+        top: 0px;
+        margin-right: 156px;
+        width: 487px;
+
+        li a {
+            font-size: 13px;
+            color: #572ee5;
+            text-transform: uppercase;
+            font-weight: bold;
+            &:hover {
+                text-decoration-line: underline;
+                text-decoration-color: #00f3bb;
+            }
+            &:active {
+                text-decoration: none;
+                color: #9cafc3;
+            }
+        }
+        .crear-gifo {
+            display: block;
+            width: 54px;
+            height: 54px;
+        }
+        hr {
+            display: none;
+        }
+    }
+}

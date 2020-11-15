@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>GIFOS - Home</title>
+  <link rel="shortcut icon" href="./images/logo-mobile.svg" type="image/x-icon" />
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo-desktop" href="./index.html"><img id="logo_desktop" src="./images/logo-desktop.svg" alt="logo"
+          class="logo" /></a>
+      <a class="logo-mobile" href="./index.html"><img id="logo_mobile" src="./images/logo-mobile.svg" alt="logo"
+          class="logo" /></a>
+
+      <input type="checkbox" name="menu-botom" id="menu-boton" class="checkbox-menu" value="chau" />
+
+      <ul class="menu">
+        <li><a id="dark_button" href="#">Modo Nocturno</a></li>
+        <hr />
+        <li><a href="./favoritos.html">Favoritos</a></li>
+        <hr />
+        <li><a href="./mis-gifos.html">Mis GIFOS</a></li>
+        <li class="crear-gifo">
+          <a href="./crear-gifos.html"><img id="crear_gifos" src="./images/button-crear-gifo.svg" alt="" /></a>
+        </li>
+      </ul>
+
+      <label for="menu-boton" class="open-menu"><img src="./images/burger.svg" alt="Open menu" id="open_menu" /></label>
+      <label for="menu-boton" class="close-menu"><img src="./images/close.svg" alt="Close menu"
+          id="close_menu" /></label>
+    </nav>
+  </header>
+  <main>
+    <section class="buscador">
+      <h1>
+        Inspírate, busca, guarda, y crea <br class="br-h1" />
+        los mejores
+        <span class="green">GIFOS</span>
+      </h1>
+      <img class="ilustra-header" src="./images/ilustra_header.svg" alt="Imagen" />
+      <div class="input-ctn" id="inputCtn">
+        <div class="inputDiv">
+          <input type="text" id="inputText" placeholder="Busca GIFOS y más" />
+          <img class="lupa" src="./images/icon-search.svg" alt="Lupa" id="lupa" />
+          <img class="x" src="./images/close.svg" alt="X" id="x" />
+          <!--display none  -->
+        </div>
+        <hr id="hrInput">
+        <div class="sugerenciasDiv" id="sugerenciasDiv">
+          <ul id="sugerencias">
+
+          </ul>
+        </div>
+      </div>
+      <h4 id="trendingTitle">Trending:</h4>
+      <p id="trending_text">
+        Reactions, Entertainment,<br class="br-buscador" />
+        Sports, Stickers, Artists
+      </p>
+
+      <div class="search-results" id="searchResults">
+        <!-- display none -->
+
+        <hr />
+        <h2 id="searchValue"></h2>
+        <div class="results-ctn" id="resultsCtn">
+          <div class="card">
+            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
+            <div class="icons-card">
+              <img src="./images/icon-fav.svg" alt="" />
+              <img src="./images/icon-download.svg" alt="" />
+              <img src="./images/icon-max-normal.svg" alt="" />
+            </div>
+          </div>
+          <div class="card">
+            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
+            <div class="icons-card">
+              <img src="./images/icon-fav.svg" alt="" />
+              <img src="./images/icon-download.svg" alt="" />
+              <img src="./images/icon-max-normal.svg" alt="" />
+            </div>
+          </div>
+          <div class="card">
+            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
+            <div class="icons-card">
+              <img src="./images/icon-fav.svg" alt="" />
+              <img src="./images/icon-download.svg" alt="" />
+              <img src="./images/icon-max-normal.svg" alt="" />
+            </div>
+          </div>
+          <div class="card">
+            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
+            <div class="icons-card">
+              <img src="./images/icon-fav.svg" alt="" />
+              <img src="./images/icon-download.svg" alt="" />
+              <img src="./images/icon-max-normal.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        <button class="ver-mas">VER MAS</button>
+      </div>
+    </section>
+    <section class="trending">
+      <h2>Trending GIFOS</h2>
+      <p>
+        Mira los últimos<br />
+        GIFOS de nuestra comunidad.
+      </p>
+      <div class="trending-img-ctn">
+        <img class="button-slider" src="./images/button-slider-left.svg" alt="" />
+        <div class="imgs-ctn" id="imgs_ctn"></div>
+        <img class="button-slider" src="./images/Button-Slider-right.svg" alt="" />
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>
+      <p>compartir en:</p>
+
+      <img src="./images/icon_facebook.svg" alt="Facebook" />
+      <img src="./images/icon-twitter.svg" alt="Twitter" />
+      <img src="./images/icon_instagram.svg" alt="Instagram" />
+    </div>
+
+    <p>© GIFOS 2020 All Rights Reserved.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+
+</html>

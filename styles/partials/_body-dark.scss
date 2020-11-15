@@ -1,0 +1,53 @@
+.body-dark {
+    background-color: #37383c;
+
+    header {
+        .nav {
+            border-top: solid 5px #000000;
+        }
+
+        .menu {
+            background-color: #000000;
+            z-index: 10;
+        }
+    }
+    .buscador {
+        color: #ffffff;
+        .input-ctn {
+            border-color: #ffffff;
+        }
+        .search-results {
+            .ver-mas {
+            border-color: white;
+            background-color: #37383c;
+            color: white;
+            &:hover {
+                background-color: white;
+                color: #37383c;
+              }
+        }
+        }
+        
+    }
+    .trending {
+        background-color: #222326;
+        color: #ffffff;
+        h2 {
+            color: #ffffff;
+        }
+    }
+    footer {
+        color: #ffffff;
+        border-bottom: #000000 solid 5px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .body-dark {
+        header {
+            .menu {
+                background-color: #37383c;
+            }
+        }
+    }
+}

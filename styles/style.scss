@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto&display=swap");
+// VARIABLES 
+ 
+@import "./partials/_header";
+@import "./partials/_buscador";
+@import "./partials/_trending";
+@import "./partials/_footer";
+@import "./partials/body-dark";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Montserrat", sans-serif;
+}
+
+.hide {
+	display: none;
+}
+

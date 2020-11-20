@@ -1,11 +1,8 @@
-.logo-mobile {
+.logo {
     margin: 34px 22px;
     width: 48.8px;
     height: 48.8px;
     font-family: "roboto", sans-serif;
-}
-.logo-desktop {
-    display: none;
 }
 
 .nav {
@@ -54,7 +51,7 @@ input:checked ~ .close-menu {
     li {
         list-style: none;
         line-height: 48px;
-        a {
+        .menuOption {
             text-decoration: none;
             color: white;
         }
@@ -77,16 +74,14 @@ input:checked ~ .close-menu {
         height: 90px;
     }
 
-    .logo-desktop {
+    .logo {
         display: block;
         height: 59.1px;
         width: 59.1px;
         margin-left: 156px;
         margin-top: 18px;
     }
-    .logo-mobile {
-        display: none;
-    }
+    
 
     .open-menu {
         display: none;
@@ -103,17 +98,22 @@ input:checked ~ .close-menu {
         margin-right: 156px;
         width: 487px;
 
-        li a {
-            font-size: 13px;
-            color: #572ee5;
-            text-transform: uppercase;
-            font-weight: bold;
-            &:hover {
-                text-decoration-line: underline;
-                text-decoration-color: #00f3bb;
+        li {
+            .menuOption {
+                font-size: 13px;
+                color: #572ee5;
+                text-transform: uppercase;
+                font-weight: bold;
+                &:hover {
+                    text-decoration-line: underline;
+                    text-decoration-color: #00f3bb;
+                }
+                &:active {
+                    text-decoration: none;
+                    color: #9cafc3;
+                }
             }
-            &:active {
-                text-decoration: none;
+            .grey {
                 color: #9cafc3;
             }
         }

@@ -6,25 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/style.css" />
   <title>GIFOS - Home</title>
-  <link rel="shortcut icon" href="./images/logo-mobile.svg" type="image/x-icon" />
+  <link rel="shortcut icon" href="./images/logo-desktop.svg" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/images/logo-ios.png">
 </head>
 
 <body>
   <header>
     <nav class="nav">
-      <a class="logo-desktop" href="./index.html"><img id="logo_desktop" src="./images/logo-desktop.svg" alt="logo"
-          class="logo" /></a>
-      <a class="logo-mobile" href="./index.html"><img id="logo_mobile" src="./images/logo-mobile.svg" alt="logo"
-          class="logo" /></a>
+      <a class="logo" href="./index.html"><img id="logo" src="./images/logo-desktop.svg" alt="logo" /></a>
 
-      <input type="checkbox" name="menu-botom" id="menu-boton" class="checkbox-menu" value="chau" />
+      <input type="checkbox" name="menu-boto" id="menu-boton" class="checkbox-menu" value="chau" />
 
       <ul class="menu">
-        <li><a id="dark_button" href="#">Modo Nocturno</a></li>
+        <li><a class='menuOption' id="dark_button" href="#">Modo Nocturno</a></li>
         <hr />
-        <li><a href="./favoritos.html">Favoritos</a></li>
+        <li><a class='menuOption' href="./favoritos.html">Favoritos</a></li>
         <hr />
-        <li><a href="./mis-gifos.html">Mis GIFOS</a></li>
+        <li><a class='menuOption' href="./mis-gifos.html">Mis GIFOS</a></li>
         <li class="crear-gifo">
           <a href="./crear-gifos.html"><img id="crear_gifos" src="./images/button-crear-gifo.svg" alt="" /></a>
         </li>
@@ -64,45 +62,13 @@
       </p>
 
       <div class="search-results" id="searchResults">
-        <!-- display none -->
 
         <hr />
         <h2 id="searchValue"></h2>
         <div class="results-ctn" id="resultsCtn">
-          <div class="card">
-            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
-            <div class="icons-card">
-              <img src="./images/icon-fav.svg" alt="" />
-              <img src="./images/icon-download.svg" alt="" />
-              <img src="./images/icon-max-normal.svg" alt="" />
-            </div>
-          </div>
-          <div class="card">
-            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
-            <div class="icons-card">
-              <img src="./images/icon-fav.svg" alt="" />
-              <img src="./images/icon-download.svg" alt="" />
-              <img src="./images/icon-max-normal.svg" alt="" />
-            </div>
-          </div>
-          <div class="card">
-            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
-            <div class="icons-card">
-              <img src="./images/icon-fav.svg" alt="" />
-              <img src="./images/icon-download.svg" alt="" />
-              <img src="./images/icon-max-normal.svg" alt="" />
-            </div>
-          </div>
-          <div class="card">
-            <img class="gif" src="https://picsum.photos/id/684/156/120" alt="" />
-            <div class="icons-card">
-              <img src="./images/icon-fav.svg" alt="" />
-              <img src="./images/icon-download.svg" alt="" />
-              <img src="./images/icon-max-normal.svg" alt="" />
-            </div>
-          </div>
+
         </div>
-        <button class="ver-mas">VER MAS</button>
+        <button id="verMas" class="ver-mas">VER MÁS</button>
       </div>
     </section>
     <section class="trending">
@@ -112,9 +78,9 @@
         GIFOS de nuestra comunidad.
       </p>
       <div class="trending-img-ctn">
-        <img class="button-slider" src="./images/button-slider-left.svg" alt="" />
+        <img class="button-slider" src="./images/button-slider-left.svg" alt="" id="sliderL" />
         <div class="imgs-ctn" id="imgs_ctn"></div>
-        <img class="button-slider" src="./images/Button-Slider-right.svg" alt="" />
+        <img class="button-slider" src="./images/Button-Slider-right.svg" alt="" id="sliderR" />
       </div>
     </section>
   </main>
@@ -122,9 +88,12 @@
     <div>
       <p>compartir en:</p>
 
-      <img src="./images/icon_facebook.svg" alt="Facebook" />
-      <img src="./images/icon-twitter.svg" alt="Twitter" />
-      <img src="./images/icon_instagram.svg" alt="Instagram" />
+      <a href="https://facebook.com" target="_blank" title="Facebook"><img src="./images/icon_facebook.svg"
+          alt="Facebook" id="iconFB" /></a>
+      <a href="https://twitter.com" target="_blank" title="Twitter"><img src="./images/icon-twitter.svg" alt="Twitter"
+          id="iconTW" /></a>
+      <a href="https://instagram.com" target="_blank" title="Instagram"><img src="./images/icon_instagram.svg"
+          alt="Instagram" id="iconIG" /></a>
     </div>
 
     <p>© GIFOS 2020 All Rights Reserved.</p>

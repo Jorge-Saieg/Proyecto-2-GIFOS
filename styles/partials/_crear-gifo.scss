@@ -1,0 +1,117 @@
+.divCrearGifo {
+  display: flex;
+
+  .camara {
+    margin-left: 156px;
+    margin-right: 2px;
+  }
+
+  .externo {
+    position: relative;
+    width: 47.8%;
+    height: 390px;
+    border: 1px solid #572ee5;
+    margin-top: 4px;
+    margin-left: 20px;
+  }
+  h2 {
+      text-align: center;
+      margin-top: 134px;
+      color: #572ee5;
+      font-size: 25px;
+      line-height: 35px;
+      .green {
+          color: #00f3bb;
+      }
+  }
+  p {
+      text-align: center;
+      line-height: 29px;
+      font-family: "Roboto", sans-serif;
+  }
+  .interno1 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 27px;
+    height: 25px;
+    border-top: 1px solid #00f3bb;
+    border-left: 1px solid #00f3bb;
+  }
+  .interno2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 27px;
+    height: 25px;
+    border-top: 1px solid #00f3bb;
+    border-right: 1px solid #00f3bb;
+  }
+  .interno3 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 27px;
+    height: 25px;
+    border-bottom: 1px solid #00f3bb;
+    border-left: 1px solid #00f3bb;
+  }
+  .interno4 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 27px;
+    height: 25px;
+    border-bottom: 1px solid #00f3bb;
+    border-right: 1px solid #00f3bb;
+  }
+  .pelicula {
+    position: relative;
+    left: 67px;
+    top: 230px;
+  }
+}
+
+.numerosCtn {
+  display: flex;
+  justify-content: center;
+  .numero {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #572ee5;
+    border-radius: 50%;
+    margin: 24px 12.5px 19px;
+    text-align: center;
+    line-height: 32px;
+    font-family: "Roboto", sans-serif;
+    color: #572ee5;
+  }
+}
+
+.violetLine {
+  width: 795.9px;
+  height: 6.9px;
+  background-color: #572ee5;
+  border-radius: 20px;
+  margin: 0 auto 20.1px;
+}
+
+.startButton {
+  border: #572ee5 solid 1px;
+  border-radius: 25px;
+  height: 50px;
+  width: 127px;
+  margin: 0px 45.6% 26px;
+  background-color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #572ee5;
+  font-size: 13px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: #572ee5;
+    color: white;
+  }
+}

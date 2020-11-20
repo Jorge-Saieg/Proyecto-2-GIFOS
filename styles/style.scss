@@ -5,6 +5,7 @@
 @import "./partials/_buscador";
 @import "./partials/_trending";
 @import "./partials/_footer";
+@import "./partials/crear-gifo";
 @import "./partials/body-dark";
 
 * {
@@ -14,6 +15,7 @@
 body {
 	font-family: "Montserrat", sans-serif;
 }
+
 
 .hide {
 	display: none;

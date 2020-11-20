@@ -1,1 +1,82 @@
-<p>Paciencia...</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>GIFOS - Crear GIFO</title>
+  <link rel="shortcut icon" href="./images/logo-mobile.svg" type="image/x-icon" />
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="./index.html">
+        <img id="logo" src="./images/logo-desktop.svg" alt="logo" />
+      </a>
+
+      <input type="checkbox" name="menu-boton" id="menu-boton" class="checkbox-menu" />
+
+      <ul class="menu">
+        <li>
+          <a class="menuOption" id="dark_button" href="#">Modo Nocturno</a>
+        </li>
+        <hr />
+        <li>
+          <a class="menuOption" href="./favoritos.html">Favoritos</a>
+        </li>
+        <hr />
+        <li><a class="menuOption" href="./mis-gifos.html">Mis GIFOS</a></li>
+        <li class="crear-gifo">
+          <a href="./crear-gifos.html">
+            <img id="crear_gifos" src="./images/button-crear-gifo.svg" alt="" />
+          </a>
+        </li>
+      </ul>
+
+      <label for="menu-boton" class="open-menu">
+        <img src="./images/burger.svg" alt="Open menu" id="open_menu" />
+      </label>
+      <label for="menu-boton" class="close-menu">
+        <img src="./images/close.svg" alt="Close menu" id="close_menu" />
+      </label>
+    </nav>
+  </header>
+  <main>
+    <div class="divCrearGifo">
+      <img class="camara" src="./images/camara.svg" alt="camara">
+      <img class="luzCamara" src="./images/element-luz-camara.svg" alt="luz-camara">
+      <div class="externo">
+        <h2>Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
+        <p>¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+        <div class="interno1"></div>
+        <div class="interno2"></div>
+        <div class="interno3"></div>
+        <div class="interno4"></div>
+      </div>
+      <img class="pelicula" src="./images/pelicula.svg" alt="pelicula">
+    </div>
+    <div class="numerosCtn">
+      <div class="numero pasoUno">1</div>
+      <div class="numero pasoDos">2</div>
+      <div class="numero pasoTres">3</div>
+    </div>
+    <div class="violetLine"></div>
+    <button class="startButton">COMENZAR</button>
+  </main>
+  <footer>
+    <div>
+      <p>compartir en:</p>
+
+      <img src="./images/icon_facebook.svg" alt="Facebook" id="iconFB" />
+      <img src="./images/icon-twitter.svg" alt="Twitter" id="iconTW" />
+      <img src="./images/icon_instagram.svg" alt="Instagram" id="iconIG" />
+    </div>
+
+    <p>© GIFOS 2020 All Rights Reserved.</p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+
+</html>

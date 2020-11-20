@@ -17,20 +17,26 @@
     display: none;
   }
   .trending-img-ctn {
-    overflow: scroll;
     display: flex;
     padding: 11px;
 
     .imgs-ctn {
-		.gif {
-		  margin: 11px;
-		  width: 243px;
-		  height: 187px;
-		}
-	  display: flex;
-	  .icons-card {
-		  display: none;
-	  }
+      display: flex;
+      overflow: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .gif {
+        margin: 11px;
+        width: 243px;
+        height: 187px;
+      }
+      .icons-card {
+        display: none;
+      }
     }
     .button-slider {
       display: none;
@@ -55,16 +61,18 @@
       align-items: center;
       justify-content: center;
       .imgs-ctn {
+        width: 1130px;
+
         .card {
           width: 357px;
           height: 275px;
           margin: 11px;
           position: relative;
           .gif {
-			  position: relative;
-			  width: 357px;
-			  height: 275px;
-			  margin: 0;
+            position: relative;
+            width: 357px;
+            height: 275px;
+            margin: 0;
           }
           &:hover {
             .icons-card {
@@ -79,8 +87,50 @@
               justify-content: flex-end;
               align-items: flex-start;
               padding: 5.5px;
-              img {
+              .iconFav,
+              .iconDown,
+              .iconMax {
                 margin: 5.5px;
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+              }
+              .iconFav {
+                background-image: url("/images/icon-fav.svg");
+                &:hover {
+                  background-image: url("/images/icon-fav-hover.svg");
+                }
+              }
+
+              .iconDown {
+                background-image: url("/images/icon-download.svg");
+                &:hover {
+                  background-image: url("/images/icon-download-hover.svg");
+                }
+              }
+              .iconMax {
+                background-image: url("/images/icon-max-normal.svg");
+                &:hover {
+                  background-image: url("/images/icon-max-hover.svg");
+                }
+              }
+              .gifData {
+                position: absolute;
+                left: 0px;
+                top: 175px;
+                width: 100%;
+                height: 100px;
+                align-self: flex-end;
+                justify-self: flex-start;
+                .userName {
+                  font-size: 15px;
+                }
+                .userName,
+                .gifTitle {
+                  color: white;
+                  text-align: start;
+                  margin: 6px 18px;
+                }
               }
             }
           }
@@ -90,8 +140,8 @@
       .button-slider {
         display: block;
         width: 40px;
-		height: 40px;
-		margin: 11px;
+        height: 40px;
+        margin: 11px;
       }
     }
   }

@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto&display=swap");
-.logo-mobile {
+.logo {
   margin: 34px 22px;
   width: 48.8px;
   height: 48.8px;
   font-family: "roboto", sans-serif;
-}
-
-.logo-desktop {
-  display: none;
 }
 
 .nav {
@@ -65,7 +61,7 @@ input:checked ~ .close-menu {
   line-height: 48px;
 }
 
-.menu li a {
+.menu li .menuOption {
   text-decoration: none;
   color: white;
 }
@@ -87,15 +83,12 @@ input:checked ~ .close-menu {
   .nav {
     height: 90px;
   }
-  .logo-desktop {
+  .logo {
     display: block;
     height: 59.1px;
     width: 59.1px;
     margin-left: 156px;
     margin-top: 18px;
-  }
-  .logo-mobile {
-    display: none;
   }
   .open-menu {
     display: none;
@@ -117,20 +110,23 @@ input:checked ~ .close-menu {
     margin-right: 156px;
     width: 487px;
   }
-  .menu li a {
+  .menu li .menuOption {
     font-size: 13px;
     color: #572ee5;
     text-transform: uppercase;
     font-weight: bold;
   }
-  .menu li a:hover {
+  .menu li .menuOption:hover {
     -webkit-text-decoration-line: underline;
             text-decoration-line: underline;
     -webkit-text-decoration-color: #00f3bb;
             text-decoration-color: #00f3bb;
   }
-  .menu li a:active {
+  .menu li .menuOption:active {
     text-decoration: none;
+    color: #9cafc3;
+  }
+  .menu li .grey {
     color: #9cafc3;
   }
   .menu .crear-gifo {
@@ -318,13 +314,17 @@ input:checked ~ .close-menu {
   color: white;
 }
 
-.buscador-fav .search-results .icon-favoritos {
+.buscador-fav .search-results-fav {
+  display: block;
+}
+
+.buscador-fav .search-results-fav .icon-favoritos {
   margin-top: 5px;
   width: 28px;
   height: 21px;
 }
 
-.buscador-fav .search-results h2 {
+.buscador-fav .search-results-fav h2 {
   font-size: 20px;
   margin: 7px auto 46px;
 }
@@ -394,8 +394,8 @@ input:checked ~ .close-menu {
     width: 260px;
     height: 200px;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     background-color: #562ee5b4;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -408,15 +408,66 @@ input:checked ~ .close-menu {
             align-items: flex-start;
     padding: 5.5px;
   }
-  .buscador .search-results .results-ctn .card:hover .icons-card img {
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconFav,
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconDown,
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconMax {
     margin: 5.5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
   }
-  .buscador .search-results .buscador-fav .search-results .icon-favoritos {
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconFav {
+    background-image: url("/images/icon-fav.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconFav:hover {
+    background-image: url("/images/icon-fav-hover.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .itsFav {
+    background-image: url("/images/icon-trash-normal.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .itsFav:hover {
+    background-image: url("/images/icon-trash-hover.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconDown {
+    background-image: url("/images/icon-download.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconDown:hover {
+    background-image: url("/images/icon-download-hover.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconMax {
+    background-image: url("/images/icon-max-normal.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .iconMax:hover {
+    background-image: url("/images/icon-max-hover.svg");
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .gifData {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    margin-bottom: 25px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    justify-self: flex-start;
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .gifData .userName {
+    font-size: 15px;
+  }
+  .buscador .search-results .results-ctn .card:hover .icons-card .gifData .userName,
+  .buscador .search-results .results-ctn .card:hover .icons-card .gifData .gifTitle {
+    color: white;
+    text-align: start;
+    margin: 5px 12px;
+  }
+  .buscador-fav .search-results-fav {
+    display: block;
+  }
+  .buscador-fav .search-results-fav .icon-favoritos {
     margin-top: 11px;
     width: 28px;
     height: 21px;
   }
-  .buscador .search-results .buscador-fav .search-results h2 {
+  .buscador-fav .search-results-fav h2 {
     font-size: 25px;
     margin: 8px auto 36px;
   }
@@ -446,7 +497,6 @@ input:checked ~ .close-menu {
 }
 
 .trending .trending-img-ctn {
-  overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -457,6 +507,14 @@ input:checked ~ .close-menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.trending .trending-img-ctn .imgs-ctn::-webkit-scrollbar {
+  display: none;
 }
 
 .trending .trending-img-ctn .imgs-ctn .gif {
@@ -495,6 +553,9 @@ input:checked ~ .close-menu {
         -ms-flex-pack: center;
             justify-content: center;
   }
+  .trending .trending-img-ctn .imgs-ctn {
+    width: 1130px;
+  }
   .trending .trending-img-ctn .imgs-ctn .card {
     width: 357px;
     height: 275px;
@@ -527,8 +588,50 @@ input:checked ~ .close-menu {
             align-items: flex-start;
     padding: 5.5px;
   }
-  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card img {
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconFav,
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown,
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconMax {
     margin: 5.5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconFav {
+    background-image: url("/images/icon-fav.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconFav:hover {
+    background-image: url("/images/icon-fav-hover.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown {
+    background-image: url("/images/icon-download.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown:hover {
+    background-image: url("/images/icon-download-hover.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconMax {
+    background-image: url("/images/icon-max-normal.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconMax:hover {
+    background-image: url("/images/icon-max-hover.svg");
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .gifData {
+    position: absolute;
+    left: 0px;
+    top: 175px;
+    width: 100%;
+    height: 100px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    justify-self: flex-start;
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .gifData .userName {
+    font-size: 15px;
+  }
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .gifData .userName,
+  .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .gifData .gifTitle {
+    color: white;
+    text-align: start;
+    margin: 6px 18px;
   }
   .trending .trending-img-ctn .button-slider {
     display: block;
@@ -552,6 +655,7 @@ footer img {
 
 @media screen and (min-width: 769px) {
   footer {
+    position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -575,6 +679,141 @@ footer img {
   footer div img {
     padding: 0 10px;
   }
+}
+
+.divCrearGifo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.divCrearGifo .camara {
+  margin-left: 156px;
+  margin-right: 2px;
+}
+
+.divCrearGifo .externo {
+  position: relative;
+  width: 47.8%;
+  height: 390px;
+  border: 1px solid #572ee5;
+  margin-top: 4px;
+  margin-left: 20px;
+}
+
+.divCrearGifo h2 {
+  text-align: center;
+  margin-top: 134px;
+  color: #572ee5;
+  font-size: 25px;
+  line-height: 35px;
+}
+
+.divCrearGifo h2 .green {
+  color: #00f3bb;
+}
+
+.divCrearGifo p {
+  text-align: center;
+  line-height: 29px;
+  font-family: "Roboto", sans-serif;
+}
+
+.divCrearGifo .interno1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 27px;
+  height: 25px;
+  border-top: 1px solid #00f3bb;
+  border-left: 1px solid #00f3bb;
+}
+
+.divCrearGifo .interno2 {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 27px;
+  height: 25px;
+  border-top: 1px solid #00f3bb;
+  border-right: 1px solid #00f3bb;
+}
+
+.divCrearGifo .interno3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 27px;
+  height: 25px;
+  border-bottom: 1px solid #00f3bb;
+  border-left: 1px solid #00f3bb;
+}
+
+.divCrearGifo .interno4 {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 27px;
+  height: 25px;
+  border-bottom: 1px solid #00f3bb;
+  border-right: 1px solid #00f3bb;
+}
+
+.divCrearGifo .pelicula {
+  position: relative;
+  left: 67px;
+  top: 230px;
+}
+
+.numerosCtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.numerosCtn .numero {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #572ee5;
+  border-radius: 50%;
+  margin: 24px 12.5px 19px;
+  text-align: center;
+  line-height: 32px;
+  font-family: "Roboto", sans-serif;
+  color: #572ee5;
+}
+
+.violetLine {
+  width: 795.9px;
+  height: 6.9px;
+  background-color: #572ee5;
+  border-radius: 20px;
+  margin: 0 auto 20.1px;
+}
+
+.startButton {
+  border: #572ee5 solid 1px;
+  border-radius: 25px;
+  height: 50px;
+  width: 127px;
+  margin: 0px 45.6% 26px;
+  background-color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #572ee5;
+  font-size: 13px;
+}
+
+.startButton:focus {
+  outline: none;
+}
+
+.startButton:hover {
+  background-color: #572ee5;
+  color: white;
 }
 
 .body-dark {

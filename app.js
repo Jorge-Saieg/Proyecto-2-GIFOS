@@ -154,7 +154,7 @@ async function getTrendings() {
        id="${element.id}"
      />
      <div class="icons-card">
-        <div class="iconFav" onclick='agregarFavorito("${element.title}", "${element.id}")'></div>
+        <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
         <div class="iconDown"></div>
         <div class="iconMax"></div>
         <div class="gifData">
@@ -267,11 +267,10 @@ async function getSearch(text, limit) {
     resultsCtn.innerHTML = "";
     for (let index = 0; index < json.data.length; index++) {
       const element = json.data[index];
-      console.log(element);
       resultsCtn.innerHTML += `<div class="card">
       <img class="gif" id="${element.id}" src="${element.images.original.url}" alt="${element.title}" />
       <div class="icons-card">
-        <div class="iconFav" onclick='agregarFavorito("Gif-${element.title}", "${element.id}")'></div>
+        <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
         <div class="iconDown"></div>
         <div class="iconMax"></div>
         <div class="gifData">
@@ -313,7 +312,6 @@ if (lupa != null) {
       getSearch(inputText.value, 24);
       verMas.innerHTML = "VER MENOS";
     } else {
-      console.log("else");
       getSearch(inputText.value, 12);
       verMas.innerHTML = "VER MÁS";
     }
@@ -351,34 +349,51 @@ if (inputText != null) {
 
 //AGREGAR FAVORITOS
 
-function agregarFavorito(title, id) {
-  localStorage.setItem(title, id);
+let arrayFavoritos = [];
+if (localStorage.getItem("favoritos") !== null) {
+  arrayFavoritos = JSON.parse(localStorage.getItem("favoritos"));
+}
+function agregarFavorito(id) {
+  arrayFavoritos.push(id);
+  localStorage.setItem("favoritos", JSON.stringify(arrayFavoritos));
 }
 
 // MOSTRAR FAVORITOS
 
-let arrayFavoritos = Object.values(localStorage);
 const favCtn = document.getElementById("favCtn");
-
-for (let index = 0; index < arrayFavoritos.length; index++) {
-  const element = arrayFavoritos[index];
-  console.log(element);
-  getFavorites(element);
-}
-async function getFavorites(id) {
-  const pathGetFavs = `https://api.giphy.com/v1/gifs/${id}?api_key=${api_key}`;
-  let = response = await fetch(pathGetFavs);
-  let = json = await response.json();
-  favCtn.innerHTML += `<div class="card">
+if (localStorage.getItem("favoritos") !== null) {
+  async function getFavorites() {
+    let favoritosParsed = JSON.parse(localStorage.getItem("favoritos"));
+    for (let index = 0; index < favoritosParsed.length; index++) {
+      const element = favoritosParsed[index];
+      const pathGetFavs = `https://api.giphy.com/v1/gifs/${element}?api_key=${api_key}`;
+      let = response = await fetch(pathGetFavs);
+      let = json = await response.json();
+      favCtn.innerHTML += `<div class="card">
       <img class="gif" src="${json.data.images.original.url}" alt="${json.data.title}" />
       <div class="icons-card">
-          <div class="iconFav itsFav"></div>
-          <div class="iconDown"></div>
-          <div class="iconMax"></div>
-          <div class="gifData">
-          <p class= "userName">${json.data.username}</p>
-          <h4 class="gifTitle">${json.data.title}</h4>
-        </div>
+      <div class="iconFav itsFav" onclick='deleteFav("${json.data.id}")'></div>
+      <div class="iconDown"></div>
+      <div class="iconMax"></div>
+      <div class="gifData">
+      <p class= "userName">${json.data.username}</p>
+      <h4 class="gifTitle">${json.data.title}</h4>
       </div>
-  </div>`;
+      </div>
+      </div>`;
+      
+    }
+  }
+  if (favCtn) {
+    getFavorites();
+  }
+}
+// ELIMINAR FAVORITOS------------------------------------------------
+function deleteFav(id) {
+  let listaFavs = JSON.parse(localStorage.getItem("favoritos"));
+  let idPosition = listaFavs.indexOf(id);
+  listaFavs.splice(idPosition, 1);
+  localStorage.setItem("favoritos", JSON.stringify(listaFavs));
+  favCtn.innerHTML = '';
+  getFavorites();
 }

@@ -156,7 +156,7 @@ async function getTrendings() {
      <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
         <div class="iconDown"></div>
-        <div class="iconMax"></div>
+        <div class="iconMax" onclick='showModal("${element.id}")'></div>
         <div class="gifData">
           <p class= "userName">${element.username}</p>
           <h4 class="gifTitle">${element.title}</h4>
@@ -187,7 +187,7 @@ async function trendingSearches() {
     trending_text.innerHTML = "";
     for (let index = 0; index < 5; index++) {
       const element = json.data[index];
-      trending_text.innerHTML += element + (index === 4 ? " " : ", ");
+      trending_text.innerHTML += `<span onclick='getSearch("${element}", 12)'>${element}</span>${(index === 4 ? " " : ", ")}`;
     }
   } catch (error) {
     console.log("ERROR EN LOS TRENDINGS SEARCHES");
@@ -272,7 +272,7 @@ async function getSearch(text, limit) {
       <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
         <div class="iconDown"></div>
-        <div class="iconMax"></div>
+        <div class="iconMax" onclick='showModal("${element.id}")'></div>
         <div class="gifData">
           <p class= "userName">${element.username}</p>
           <h4 class="gifTitle">${element.title}</h4>
@@ -374,14 +374,13 @@ if (localStorage.getItem("favoritos") !== null) {
       <div class="icons-card">
       <div class="iconFav itsFav" onclick='deleteFav("${json.data.id}")'></div>
       <div class="iconDown"></div>
-      <div class="iconMax"></div>
+      <div class="iconMax" onclick='showModal("${json.data.id}")'></div>
       <div class="gifData">
       <p class= "userName">${json.data.username}</p>
       <h4 class="gifTitle">${json.data.title}</h4>
       </div>
       </div>
       </div>`;
-      
     }
   }
   if (favCtn) {
@@ -394,6 +393,57 @@ function deleteFav(id) {
   let idPosition = listaFavs.indexOf(id);
   listaFavs.splice(idPosition, 1);
   localStorage.setItem("favoritos", JSON.stringify(listaFavs));
-  favCtn.innerHTML = '';
+  favCtn.innerHTML = "";
   getFavorites();
 }
+
+// MODAL-------------------------------------------------------------
+const modal = document.getElementById("modal");
+async function showModal(id) {
+  modal.style.display = "flex";
+  const pathGetById = `https://api.giphy.com/v1/gifs/${id}?api_key=${api_key}`;
+  let = response = await fetch(pathGetById);
+  let = json = await response.json();
+  console.log(json);
+  modal.innerHTML = `<img id='maxGifX' class="maxGifX" src="./images/close.svg" alt="X">
+      <img class="maxGifImg" src="${json.data.images.original.url}" alt="${json.data.title}">
+      <div class="maxGifCtn">
+        <div class="maxGifData">
+          <p>User</p>
+          <h4>Title</h4>
+        </div>
+        <div class="maxGifButtons">
+          <div><img id='maxGifFav' src="./images/icon-fav.svg" alt="Favorite" onclick='agregarFavorito("${id}")'></div>
+          <div><img id='maxGifDown' src="./images/icon-download.svg" alt="Down"></div>
+        </div>
+      </div>`;
+  const maxGifX = document.getElementById("maxGifX");
+  maxGifX.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+  const maxGifFav = document.getElementById("maxGifFav");
+  const maxGifDown = document.getElementById("maxGifDown");
+  maxGifFav.addEventListener('mouseenter', () => {
+    maxGifFav.src = './images/icon-fav-hover.svg';
+  })
+  maxGifFav.addEventListener('mouseout', () => {
+    maxGifFav.src = './images/icon-fav.svg';
+  })
+  maxGifDown.addEventListener('mouseenter', () => {
+    maxGifDown.src = './images/icon-download-hover.svg';
+  })
+  maxGifDown.addEventListener('mouseout', () => {
+    maxGifDown.src = './images/icon-download.svg';
+  })
+}
+
+// DESCARGAR GIFO----------------------------------------------------
+
+/* onclick='descargarGif("${element.images.original.url}", "${element.slug}")' */
+// async function descargarGif(gifUrl, gifNombre) {
+//   console.log('down');
+//   let blob = await fetch(gifUrl).then(img => img.blob());
+//   invokeSaveAsDialog(blob, gifNombre + ".gif");
+// }
+
+

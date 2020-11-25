@@ -81,6 +81,13 @@
     line-height: 25px;
     font-weight: 500;
     margin-bottom: 45px;
+    span {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+      }
+    }
   }
   .search-results {
     display: none;
@@ -176,6 +183,7 @@
     }
     h4 {
       margin-top: 73px;
+      margin-bottom: 7px;
     }
     p {
       font-size: 16px;
@@ -263,6 +271,7 @@
                   color: white;
                   text-align: start;
                   margin: 5px 12px;
+                  font-family: "Roboto", sans-serif;
                 }
               }
             }

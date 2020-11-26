@@ -85,7 +85,7 @@
       cursor: pointer;
       &:hover {
         text-decoration: underline;
-        text-decoration-thickness: 1.5px;
+        text-decoration-thickness: 1.5px; /* solo Safari y Firefox*/
       }
     }
   }
@@ -101,6 +101,19 @@
     }
     h2 {
       margin: 43px auto 37px;
+    }
+    .empty {
+      display: flex; /* va none, lo pongo el flex hasta q haga mis gifos */
+      flex-direction: column;
+      justify-content: center;
+      img {
+        margin: 20px 0 23.7px 0;
+      }
+      h2 {
+        font-size: 16px;
+        color: #50e3c2;
+        line-height: 33px;
+      }
     }
     .results-ctn {
       display: flex;
@@ -154,6 +167,7 @@
       font-size: 20px;
       margin: 7px auto 46px;
     }
+    
   }
 }
 
@@ -195,6 +209,14 @@
       hr {
         margin-top: 55px;
         width: 338px;
+      }
+      .empty {
+        img {
+          margin-top: 109.3px;
+        }
+        h2 {
+          font-size: 22px;
+        }
       }
       .results-ctn {
         display: flex;
@@ -293,6 +315,7 @@
         font-size: 25px;
         margin: 8px auto 36px;
       }
+      
     }
   }
 }

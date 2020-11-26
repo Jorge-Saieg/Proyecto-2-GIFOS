@@ -162,6 +162,16 @@ async function getTrendings() {
           <h4 class="gifTitle">${element.title}</h4>
         </div>
      </div>`;
+      if (mediaQ769.matches) {
+        const trendCard = document.querySelector(
+          ".card"
+        ); /* (`trendCard${index}`) */
+        console.log(trendCard);
+        trendCard.addEventListener("click", () => {
+          console.log("click");
+          showModal(element.id);
+        });
+      }
     }
   } catch (error) {
     console.log("ERROR EN LOS TRENDINGS");
@@ -187,7 +197,9 @@ async function trendingSearches() {
     trending_text.innerHTML = "";
     for (let index = 0; index < 5; index++) {
       const element = json.data[index];
-      trending_text.innerHTML += `<span onclick='getSearch("${element}", 12)'>${element}</span>${(index === 4 ? " " : ", ")}`;
+      trending_text.innerHTML += `<span onclick='getSearch("${element}", 12)'>${element}</span>${
+        index === 4 ? " " : ", "
+      }`;
     }
   } catch (error) {
     console.log("ERROR EN LOS TRENDINGS SEARCHES");
@@ -264,10 +276,16 @@ async function getSearch(text, limit) {
     const pathSearch = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${text}&limit=${limit}&offset=0`;
     let = response = await fetch(pathSearch);
     let = json = await response.json();
-    resultsCtn.innerHTML = "";
-    for (let index = 0; index < json.data.length; index++) {
-      const element = json.data[index];
-      resultsCtn.innerHTML += `<div class="card">
+    if (json.data.length == 0) {
+      console.log(json.data);
+      resultsCtn.innerHTML = "";
+      console.log(empty);
+      empty.style.display = "flex";
+    } else {
+      resultsCtn.innerHTML = "";
+      for (let index = 0; index < json.data.length; index++) {
+        const element = json.data[index];
+        resultsCtn.innerHTML += `<div class="card">
       <img class="gif" id="${element.id}" src="${element.images.original.url}" alt="${element.title}" />
       <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
@@ -279,6 +297,17 @@ async function getSearch(text, limit) {
         </div>
       </div>
     </div>`;
+        if (mediaQ769.matches) {
+          const trendCard = document.querySelector(
+            ".card"
+          );
+          console.log(trendCard);
+          trendCard.addEventListener("click", () => {
+            console.log("click");
+            showModal(element.id);
+          });
+        }
+      }
     }
 
     searchValue.innerText = inputText.value;
@@ -361,8 +390,10 @@ function agregarFavorito(id) {
 // MOSTRAR FAVORITOS
 
 const favCtn = document.getElementById("favCtn");
-if (localStorage.getItem("favoritos") !== null) {
-  async function getFavorites() {
+const empty = document.getElementById("empty");
+
+async function getFavorites() {
+  if (localStorage.getItem("favoritos") !== "[]") {
     let favoritosParsed = JSON.parse(localStorage.getItem("favoritos"));
     for (let index = 0; index < favoritosParsed.length; index++) {
       const element = favoritosParsed[index];
@@ -381,11 +412,23 @@ if (localStorage.getItem("favoritos") !== null) {
       </div>
       </div>
       </div>`;
+      if (mediaQ769.matches) {
+        const trendCard = document.querySelector(
+          ".card"
+        ); /* (`trendCard${index}`) */
+        console.log(trendCard);
+        trendCard.addEventListener("click", () => {
+          console.log("click");
+          showModal(element.id);
+        });
+      }
     }
+  } else {
+    empty.style.display = "flex";
   }
-  if (favCtn) {
-    getFavorites();
-  }
+}
+if (favCtn) {
+  getFavorites();
 }
 // ELIMINAR FAVORITOS------------------------------------------------
 function deleteFav(id) {
@@ -409,8 +452,8 @@ async function showModal(id) {
       <img class="maxGifImg" src="${json.data.images.original.url}" alt="${json.data.title}">
       <div class="maxGifCtn">
         <div class="maxGifData">
-          <p>User</p>
-          <h4>Title</h4>
+          <p> ${json.data.username}</p>
+          <h4>${json.data.title}</h4>
         </div>
         <div class="maxGifButtons">
           <div><img id='maxGifFav' src="./images/icon-fav.svg" alt="Favorite" onclick='agregarFavorito("${id}")'></div>
@@ -423,18 +466,18 @@ async function showModal(id) {
   });
   const maxGifFav = document.getElementById("maxGifFav");
   const maxGifDown = document.getElementById("maxGifDown");
-  maxGifFav.addEventListener('mouseenter', () => {
-    maxGifFav.src = './images/icon-fav-hover.svg';
-  })
-  maxGifFav.addEventListener('mouseout', () => {
-    maxGifFav.src = './images/icon-fav.svg';
-  })
-  maxGifDown.addEventListener('mouseenter', () => {
-    maxGifDown.src = './images/icon-download-hover.svg';
-  })
-  maxGifDown.addEventListener('mouseout', () => {
-    maxGifDown.src = './images/icon-download.svg';
-  })
+  maxGifFav.addEventListener("mouseenter", () => {
+    maxGifFav.src = "./images/icon-fav-hover.svg";
+  });
+  maxGifFav.addEventListener("mouseout", () => {
+    maxGifFav.src = "./images/icon-fav.svg";
+  });
+  maxGifDown.addEventListener("mouseenter", () => {
+    maxGifDown.src = "./images/icon-download-hover.svg";
+  });
+  maxGifDown.addEventListener("mouseout", () => {
+    maxGifDown.src = "./images/icon-download.svg";
+  });
 }
 
 // DESCARGAR GIFO----------------------------------------------------
@@ -445,5 +488,3 @@ async function showModal(id) {
 //   let blob = await fetch(gifUrl).then(img => img.blob());
 //   invokeSaveAsDialog(blob, gifNombre + ".gif");
 // }
-
-

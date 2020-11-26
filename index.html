@@ -46,7 +46,6 @@
           <input type="text" id="inputText" placeholder="Busca GIFOS y más" />
           <img class="lupa" src="./images/icon-search.svg" alt="Lupa" id="lupa" />
           <img class="x" src="./images/close.svg" alt="X" id="x" />
-          <!--display none  -->
         </div>
         <hr id="hrInput">
         <div class="sugerenciasDiv" id="sugerenciasDiv">
@@ -65,8 +64,14 @@
 
         <hr />
         <h2 id="searchValue"></h2>
+        <div id="empty" class="empty">
+          <img src="./images/icon-busqueda-sin-resultado.svg" alt="no-results" />
+          <h2>
+            Intenta con otra búsqueda.
+          </h2>
+        </div>
         <div class="results-ctn" id="resultsCtn">
-
+          <!-- aca van se imprimen los resultados de busqueda en JS -->
         </div>
         <button id="verMas" class="ver-mas">VER MÁS</button>
       </div>

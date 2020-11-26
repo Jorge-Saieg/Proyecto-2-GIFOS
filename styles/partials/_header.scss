@@ -107,7 +107,7 @@ input:checked ~ .close-menu {
                 &:hover {
                     text-decoration-line: underline;
                     text-decoration-color: #00f3bb;
-                    text-decoration-thickness: 1.5px;
+                    text-decoration-thickness: 1.5px; /* solo Safari y Firefox*/
                 }
                 &:active {
                     text-decoration: none;

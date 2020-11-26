@@ -78,26 +78,29 @@ crear_gifos.addEventListener("mouseout", () => {
   }
 });
 // sliders
-sliderL.addEventListener("mouseenter", () => {
-  sliderL.src = "./images/button-slider-left-hover.svg";
-});
-sliderL.addEventListener("mouseout", () => {
-  if (dark_button.innerHTML === "Modo Nocturno") {
-    sliderL.src = "./images/button-slider-left.svg";
-  } else {
-    sliderL.src = "./images/button-slider-left-md-noct.svg";
-  }
-});
-sliderR.addEventListener("mouseenter", () => {
-  sliderR.src = "./images/Button-Slider-right-hover.svg";
-});
-sliderR.addEventListener("mouseout", () => {
-  if (dark_button.innerHTML === "Modo Nocturno") {
-    sliderR.src = "./images/Button-Slider-right.svg";
-  } else {
-    sliderR.src = "./images/button-slider-right-md-noct.svg";
-  }
-});
+
+if (sliderL !== null) {
+  sliderL.addEventListener("mouseenter", () => {
+    sliderL.src = "./images/button-slider-left-hover.svg";
+  });
+  sliderL.addEventListener("mouseout", () => {
+    if (dark_button.innerHTML === "Modo Nocturno") {
+      sliderL.src = "./images/button-slider-left.svg";
+    } else {
+      sliderL.src = "./images/button-slider-left-md-noct.svg";
+    }
+  });
+  sliderR.addEventListener("mouseenter", () => {
+    sliderR.src = "./images/Button-Slider-right-hover.svg";
+  });
+  sliderR.addEventListener("mouseout", () => {
+    if (dark_button.innerHTML === "Modo Nocturno") {
+      sliderR.src = "./images/Button-Slider-right.svg";
+    } else {
+      sliderR.src = "./images/button-slider-right-md-noct.svg";
+    }
+  });
+}
 // iconos redes sociales
 iconFB.addEventListener("mouseenter", () => {
   if (dark_button.innerHTML === "Modo Nocturno") {
@@ -174,19 +177,20 @@ async function getTrendings() {
       }
     }
   } catch (error) {
-    console.log("ERROR EN LOS TRENDINGS");
+    console.log("ERROR EN LOS TRENDINGS Tipo: " + error);
   }
 }
 getTrendings();
-
-sliderL.addEventListener("click", () => {
-  console.log("holaL");
-  imgs_ctn.scrollLeft -= 1200;
-});
-sliderR.addEventListener("click", () => {
-  console.log("holaR");
-  imgs_ctn.scrollLeft += 1200;
-});
+if (sliderL !== null) {
+  sliderL.addEventListener("click", () => {
+    console.log("holaL");
+    imgs_ctn.scrollLeft -= 1200;
+  });
+  sliderR.addEventListener("click", () => {
+    console.log("holaR");
+    imgs_ctn.scrollLeft += 1200;
+  });
+}
 
 // TRENDING SEARCHES-------------------------------------------------
 async function trendingSearches() {
@@ -197,12 +201,12 @@ async function trendingSearches() {
     trending_text.innerHTML = "";
     for (let index = 0; index < 5; index++) {
       const element = json.data[index];
-      trending_text.innerHTML += `<span onclick='getSearch("${element}", 12)'>${element}</span>${
+      trending_text.innerHTML += `<span onclick='getSearch("${element}")'>${element}</span>${
         index === 4 ? " " : ", "
       }`;
     }
   } catch (error) {
-    console.log("ERROR EN LOS TRENDINGS SEARCHES");
+    console.log("ERROR EN LOS TRENDINGS SEARCHES Tipo: " + error);
   }
 }
 trendingSearches();
@@ -270,10 +274,11 @@ if (x != null) {
 }
 
 // OBTAIN GIFS-------------------------------------------------------
-async function getSearch(text, limit) {
+let offset = 0;
+async function getSearch(text) {
   try {
     inputText.value = text;
-    const pathSearch = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${text}&limit=${limit}&offset=0`;
+    const pathSearch = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${text}&limit=12&offset=${offset}`;
     let = response = await fetch(pathSearch);
     let = json = await response.json();
     if (json.data.length == 0) {
@@ -298,9 +303,7 @@ async function getSearch(text, limit) {
       </div>
     </div>`;
         if (mediaQ769.matches) {
-          const trendCard = document.querySelector(
-            ".card"
-          );
+          const trendCard = document.querySelector(".card");
           console.log(trendCard);
           trendCard.addEventListener("click", () => {
             console.log("click");
@@ -318,7 +321,7 @@ async function getSearch(text, limit) {
 }
 if (lupa != null) {
   lupa.addEventListener("click", () => {
-    getSearch(inputText.value, 12);
+    getSearch(inputText.value);
     hrInput.style.display = "none";
     sugerenciasDiv.style.display = "none";
     trendingTitle.style.display = "none";
@@ -332,18 +335,13 @@ if (lupa != null) {
       sugerenciasDiv.style.display = "none";
       trendingTitle.style.display = "none";
       trending_text.style.display = "none";
-      getSearch(inputText.value, 12);
+      getSearch(inputText.value);
     }
   });
 
   verMas.addEventListener("click", () => {
-    if (verMas.innerHTML === "VER MÁS") {
-      getSearch(inputText.value, 24);
-      verMas.innerHTML = "VER MENOS";
-    } else {
-      getSearch(inputText.value, 12);
-      verMas.innerHTML = "VER MÁS";
-    }
+    offset += 12;
+    getSearch(inputText.value);
   });
 }
 
@@ -357,7 +355,7 @@ async function showSuggestions() {
     sugerencias.innerHTML = "";
     for (let index = 0; index < json.data.length; index++) {
       const element = json.data[index];
-      sugerencias.innerHTML += `<li id="sugerencia${index}"><img src="./images/icon-search.svg" alt="Lupa" class="lupaSugerencias"><span id="textoSugg${index}" onclick="getSearch('${element.name}', 12)">${element.name}</span></li>`;
+      sugerencias.innerHTML += `<li id="sugerencia${index}"><img src="./images/icon-search.svg" alt="Lupa" class="lupaSugerencias"><span id="textoSugg${index}" onclick="getSearch('${element.name}')">${element.name}</span></li>`;
     }
   } catch (error) {
     console.log("ERROR EN LAS SUGERENCIAS");
@@ -488,3 +486,36 @@ async function showModal(id) {
 //   let blob = await fetch(gifUrl).then(img => img.blob());
 //   invokeSaveAsDialog(blob, gifNombre + ".gif");
 // }
+
+// CREAR GIFO--------------------------------------------------------
+
+const divInterno = document.getElementById('divInterno');
+const video = document.getElementById('video');
+const pasoUno = document.getElementById('pasoUno');
+const pasoDos = document.getElementById('pasoDos');
+const pasoTres = document.getElementById('pasoTres');
+const crearButton = document.getElementById("crearButton");
+
+function getStreamAndRecord () { 
+  navigator.mediaDevices.getUserMedia({
+  audio: false,
+  video: {
+     height: { max: 480 }
+  }
+})
+.then(function(stream) {
+  video.srcObject = stream;
+  video.play();
+})
+}
+
+crearButton.addEventListener('click', () => {
+  video.style.display = 'block';
+  divInterno.style.display = 'none';
+  pasoDos.style.backgroundColor = '#572ee5';
+  pasoDos.style.color = 'white';
+  crearButton.innerHTML = 'GRABAR';
+  getStreamAndRecord();
+})
+
+

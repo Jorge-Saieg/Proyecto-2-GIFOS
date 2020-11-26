@@ -232,6 +232,7 @@ input:checked ~ .close-menu {
   color: #9cafc3;
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.7px;
+  cursor: pointer;
 }
 
 .buscador .input-ctn .sugerenciasDiv ul li .lupaSugerencias {
@@ -279,9 +280,7 @@ input:checked ~ .close-menu {
 }
 
 .buscador .search-results .empty {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   /* va none, lo pongo el flex hasta q haga mis gifos */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -762,6 +761,12 @@ footer img {
   text-align: center;
   line-height: 29px;
   font-family: "Roboto", sans-serif;
+}
+
+.divCrearGifo .video {
+  display: none;
+  height: 345px;
+  margin: 20px auto;
 }
 
 .divCrearGifo .interno1 {

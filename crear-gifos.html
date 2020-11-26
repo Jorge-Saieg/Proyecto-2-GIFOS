@@ -48,8 +48,11 @@
       <img class="camara" src="./images/camara.svg" alt="camara">
       <img class="luzCamara" src="./images/element-luz-camara.svg" alt="luz-camara">
       <div class="externo">
-        <h2>Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
-        <p>¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+        <div id="divInterno" class="divInterno">
+          <h2>Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
+          <p>¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+        </div>
+        <video id="video" class="video" src=""></video>
         <div class="interno1"></div>
         <div class="interno2"></div>
         <div class="interno3"></div>
@@ -58,12 +61,12 @@
       <img class="pelicula" src="./images/pelicula.svg" alt="pelicula">
     </div>
     <div class="numerosCtn">
-      <div class="numero pasoUno">1</div>
-      <div class="numero pasoDos">2</div>
-      <div class="numero pasoTres">3</div>
+      <div id="pasoUno" class="numero pasoUno">1</div>
+      <div id="pasoDos" class="numero pasoDos">2</div>
+      <div id="pasoTres" class="numero pasoTres">3</div>
     </div>
     <div class="violetLine"></div>
-    <button class="startButton">COMENZAR</button>
+    <button id="crearButton" class="startButton">COMENZAR</button>
   </main>
   <footer>
     <div>

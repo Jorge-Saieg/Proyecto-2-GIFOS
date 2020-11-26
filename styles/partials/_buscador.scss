@@ -67,6 +67,7 @@
           color: #9cafc3;
           font-family: "Roboto", sans-serif;
           letter-spacing: 0.7px;
+          cursor: pointer;
         }
       }
     }
@@ -103,7 +104,7 @@
       margin: 43px auto 37px;
     }
     .empty {
-      display: flex; /* va none, lo pongo el flex hasta q haga mis gifos */
+      display: none; /* va none, lo pongo el flex hasta q haga mis gifos */
       flex-direction: column;
       justify-content: center;
       img {

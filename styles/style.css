@@ -16,6 +16,9 @@
   width: 100%;
   height: 95px;
   border-top: solid 5px #572ee5;
+  position: fixed;
+  z-index: 10;
+  background-color: #ffffff;
 }
 
 .checkbox-menu {
@@ -83,6 +86,10 @@ input:checked ~ .close-menu {
   .nav {
     height: 90px;
   }
+  .add-shadow {
+    -webkit-box-shadow: 0px 2px 4px 1px rgba(156, 175, 195, 0.55);
+            box-shadow: 0px 2px 4px 1px rgba(156, 175, 195, 0.55);
+  }
   .logo {
     display: block;
     height: 59.1px;
@@ -142,6 +149,7 @@ input:checked ~ .close-menu {
 }
 
 .buscador {
+  padding-top: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,11 +173,23 @@ input:checked ~ .close-menu {
   color: #50e3c2;
 }
 
+.buscador .divObserver {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 420px;
+  background-color: rgba(0, 0, 0, 0.438);
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  visibility: hidden;
+}
+
 .buscador .ilustra-header {
   width: 78.2%;
 }
 
 .buscador .input-ctn {
+  z-index: 10;
   border: #572ee5 solid 1px;
   border-radius: 27px;
   width: 90%;
@@ -366,6 +386,7 @@ input:checked ~ .close-menu {
 
 @media screen and (min-width: 769px) {
   .buscador {
+    padding-top: 95px;
     margin-bottom: 45px;
   }
   .buscador h1 {
@@ -377,6 +398,10 @@ input:checked ~ .close-menu {
     width: 399px;
   }
   .buscador .input-ctn {
+    background-color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 24px;
     width: 551px;
   }
   .buscador .input-ctn hr {
@@ -386,6 +411,12 @@ input:checked ~ .close-menu {
     opacity: 0.5;
     width: 505px;
     margin: 0 auto;
+  }
+  .buscador .isSticky {
+    width: 23%;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    left: 23%;
   }
   .buscador .br-buscador {
     display: none;
@@ -726,6 +757,7 @@ footer img {
 }
 
 .divCrearGifo {
+  padding-top: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -844,7 +876,7 @@ footer img {
   margin: 0 auto 20.1px;
 }
 
-.startButton {
+.crearGifoButton {
   border: #572ee5 solid 1px;
   border-radius: 25px;
   height: 50px;
@@ -855,13 +887,14 @@ footer img {
   font-weight: 700;
   color: #572ee5;
   font-size: 13px;
+  cursor: pointer;
 }
 
-.startButton:focus {
+.crearGifoButton:focus {
   outline: none;
 }
 
-.startButton:hover {
+.crearGifoButton:hover {
   background-color: #572ee5;
   color: white;
 }
@@ -954,6 +987,7 @@ footer img {
 
 .body-dark header .nav {
   border-top: solid 5px #000000;
+  background-color: #37383c;
 }
 
 .body-dark header .menu {
@@ -967,6 +1001,7 @@ footer img {
 
 .body-dark .buscador .input-ctn {
   border-color: #ffffff;
+  background-color: #37383c;
 }
 
 .body-dark .buscador .search-results .ver-mas {

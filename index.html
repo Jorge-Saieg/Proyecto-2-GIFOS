@@ -12,10 +12,18 @@
 
 <body>
   <header>
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <a class="logo" href="./index.html"><img id="logo" src="./images/logo-desktop.svg" alt="logo" /></a>
 
       <input type="checkbox" name="menu-boto" id="menu-boton" class="checkbox-menu" value="chau" />
+
+      <!-- <div class="input-ctn" id="topInputCtn">
+        <div class="inputDiv">
+          <input type="text" id="topinputText" placeholder="Busca GIFOS y más" />
+          <img class="lupa" src="./images/icon-search.svg" alt="Lupa" id="topLupa" />
+          <img class="x" src="./images/close.svg" alt="X" id="topX" />
+        </div>
+      </div> -->
 
       <ul class="menu">
         <li><a class='menuOption' id="dark_button" href="#">Modo Nocturno</a></li>
@@ -40,6 +48,7 @@
         los mejores
         <span class="green">GIFOS</span>
       </h1>
+      <div class="divObserver" id="divObserver"></div><!-- Este div es para ajustar el input con el observer en JS -->
       <img class="ilustra-header" src="./images/ilustra_header.svg" alt="Imagen" />
       <div class="input-ctn" id="inputCtn">
         <div class="inputDiv">
@@ -50,7 +59,7 @@
         <hr id="hrInput">
         <div class="sugerenciasDiv" id="sugerenciasDiv">
           <ul id="sugerencias">
-
+            <!-- Aqui van kas sugerencias de busqueda -->
           </ul>
         </div>
       </div>
@@ -89,7 +98,7 @@
       </div>
     </section>
     <section class="modal" id="modal">
-      
+
     </section>
   </main>
   <footer>

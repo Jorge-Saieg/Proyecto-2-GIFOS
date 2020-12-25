@@ -11,7 +11,7 @@
 
 <body>
   <header>
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <a class="logo" href="./index.html">
         <img id="logo" src="./images/logo-desktop.svg" alt="logo" />
       </a>
@@ -49,10 +49,11 @@
       <img class="luzCamara" src="./images/element-luz-camara.svg" alt="luz-camara">
       <div class="externo">
         <div id="divInterno" class="divInterno">
-          <h2>Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
-          <p>¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+          <h2 id="h2Crear">Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
+          <p id="pCrear">¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
         </div>
         <video id="video" class="video" src=""></video>
+        <img class="video" id="gifCreado" src="" alt="gifCreado">
         <div class="interno1"></div>
         <div class="interno2"></div>
         <div class="interno3"></div>
@@ -66,7 +67,10 @@
       <div id="pasoTres" class="numero pasoTres">3</div>
     </div>
     <div class="violetLine"></div>
-    <button id="crearButton" class="startButton">COMENZAR</button>
+    <button id="comenzarButton" class="crearGifoButton">COMENZAR</button>
+    <button id="grabarButton" class="crearGifoButton">GRABAR</button>
+    <button id="finalizarButton" class="crearGifoButton">FINALIZAR</button>
+    <button id="subirGifoButton" class="crearGifoButton">SUBIR GIFO</button>
   </main>
   <footer>
     <div>
@@ -79,6 +83,7 @@
 
     <p>© GIFOS 2020 All Rights Reserved.</p>
   </footer>
+  <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
   <script src="./app.js"></script>
 </body>
 

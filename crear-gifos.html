@@ -46,11 +46,15 @@
   <main>
     <div class="divCrearGifo">
       <img class="camara" src="./images/camara.svg" alt="camara">
-      <img class="luzCamara" src="./images/element-luz-camara.svg" alt="luz-camara">
+      <img src="./images/element-luz-camara.svg" alt="luz-camara">
       <div class="externo">
-        <div id="divInterno" class="divInterno">
+        <div id="divInterno">
           <h2 id="h2Crear">Aquí podrás<br>crear tus propios <span class="green">GIFOS</span></h2>
           <p id="pCrear">¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+        </div>
+        <div id="loading" class="loading">
+          <img id="loadingImg" src="./images/loader.svg" alt="Loading">
+          <h5 id="loadingH5">Estamos subiendo tu GIFO</h5>
         </div>
         <video id="video" class="video" src=""></video>
         <img class="video" id="gifCreado" src="" alt="gifCreado">
@@ -62,15 +66,15 @@
       <img class="pelicula" src="./images/pelicula.svg" alt="pelicula">
     </div>
     <div class="numerosCtn">
-      <div id="pasoUno" class="numero pasoUno">1</div>
-      <div id="pasoDos" class="numero pasoDos">2</div>
-      <div id="pasoTres" class="numero pasoTres">3</div>
+      <div id="pasoUno" class="numero">1</div>
+      <div id="pasoDos" class="numero">2</div>
+      <div id="pasoTres" class="numero">3</div>
     </div>
     <div class="violetLine"></div>
     <button id="comenzarButton" class="crearGifoButton">COMENZAR</button>
-    <button id="grabarButton" class="crearGifoButton">GRABAR</button>
-    <button id="finalizarButton" class="crearGifoButton">FINALIZAR</button>
-    <button id="subirGifoButton" class="crearGifoButton">SUBIR GIFO</button>
+    <button id="grabarButton" class="crearGifoButton hide">GRABAR</button>
+    <button id="finalizarButton" class="crearGifoButton hide">FINALIZAR</button>
+    <button id="subirGifoButton" class="crearGifoButton hide">SUBIR GIFO</button>
   </main>
   <footer>
     <div>

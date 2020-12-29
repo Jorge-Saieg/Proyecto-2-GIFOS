@@ -764,7 +764,7 @@ footer img {
 }
 
 .divCrearGifo .camara {
-  margin-left: 156px;
+  margin-left: 10.8%;
   margin-right: 2px;
 }
 
@@ -774,7 +774,7 @@ footer img {
   height: 390px;
   border: 1px solid #572ee5;
   margin-top: 4px;
-  margin-left: 20px;
+  margin-left: 1.6%;
 }
 
 .divCrearGifo h2 {
@@ -793,6 +793,27 @@ footer img {
   text-align: center;
   line-height: 29px;
   font-family: "Roboto", sans-serif;
+}
+
+.divCrearGifo .loading {
+  display: none;
+  width: 518px;
+  height: 345px;
+  background-color: #562ee594;
+  position: absolute;
+  top: 20px;
+  left: 84px;
+  text-align: center;
+}
+
+.divCrearGifo .loading img {
+  margin-top: 122px;
+}
+
+.divCrearGifo .loading h5 {
+  font-size: 15px;
+  margin-top: 10px;
+  color: white;
 }
 
 .divCrearGifo .video {
@@ -842,9 +863,9 @@ footer img {
 }
 
 .divCrearGifo .pelicula {
-  position: relative;
-  left: 67px;
-  top: 230px;
+  position: absolute;
+  right: 11.6%;
+  top: 477px;
 }
 
 .numerosCtn {
@@ -869,7 +890,7 @@ footer img {
 }
 
 .violetLine {
-  width: 795.9px;
+  width: 55.3%;
   height: 6.9px;
   background-color: #572ee5;
   border-radius: 20px;

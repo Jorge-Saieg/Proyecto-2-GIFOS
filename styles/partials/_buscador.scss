@@ -97,8 +97,7 @@
         span {
             cursor: pointer;
             &:hover {
-                text-decoration: underline;
-                text-decoration-thickness: 1.5px; /* solo Safari y Firefox*/
+                color: #50e3c2;
             }
         }
     }
@@ -116,7 +115,7 @@
             margin: 43px auto 37px;
         }
         .empty {
-            display: none; /* va none, lo pongo el flex hasta q haga mis gifos */
+            display: none;
             flex-direction: column;
             justify-content: center;
             img {
@@ -199,6 +198,7 @@
             position: sticky;
             top: 24px;
             width: 551px;
+            z-index: 20;
             hr {
                 display: none;
                 border: 1px solid #9cafc3;

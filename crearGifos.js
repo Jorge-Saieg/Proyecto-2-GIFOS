@@ -4,6 +4,8 @@ const divInterno = document.getElementById("divInterno");
 const h2Crear = document.getElementById("h2Crear");
 const pCrear = document.getElementById("pCrear");
 const loading = document.getElementById("loading");
+const btnsCtn = document.getElementById("btnsCtn");
+const linkBtn = document.getElementById("linkBtn");
 const loadingImg = document.getElementById("loadingImg");
 const loadingH5 = document.getElementById("loadingH5");
 const video = document.getElementById("video");
@@ -56,7 +58,6 @@ function getStreamAndRecord() {
 if (comenzarButton) {
     
     comenzarButton.addEventListener("click", () => {
-        console.log("primer click");
         h2Crear.innerHTML = "¿Nos das acceso a tu cámara?";
         pCrear.innerHTML =
             "El acceso a tu camara será válido sólo<br/>por el tiempo en el que estés creando el GIFO.";
@@ -67,7 +68,6 @@ if (comenzarButton) {
     });
 
 grabarButton.addEventListener("click", () => {
-    console.log("record");
     grabarButton.style.display = "none";
     finalizarButton.style.display = "block";
 
@@ -82,7 +82,6 @@ finalizarButton.addEventListener("click", () => {
         gifCreado.style.display = "block";
         gifCreado.src = uri;
         form.append("file", blob, "myGif.gif");
-        console.log(form.get("file"));
         finalizarButton.style.display = "none";
         subirGifoButton.style.display = "block";
     });
@@ -97,22 +96,21 @@ subirGifoButton.addEventListener("click", async () => {
     let idCreated = await createGif(form);
     arrayMisGifos.push(idCreated);
     localStorage.setItem("misGifos", JSON.stringify(arrayMisGifos));
+    linkBtn.href = `https://media.giphy.com/media/${idCreated}/giphy.gif`;
     loadingImg.src = "./images/check.svg";
     loadingH5.innerHTML = "GIFO subido con éxito";
-    console.log("Mis gifs guardados", arrayMisGifos);
+    btnsCtn.style.display = 'flex';
 });
 }
 
 const pathUpload = `https://upload.giphy.com/v1/gifs?api_key=${api_key}`;
 
 async function createGif(formData) {
-    console.log(pathUpload);
     const response = await fetch(pathUpload, {
         method: "POST",
         body: formData,
     });
     const result = await response.json();
-    console.log(result.data.id);
     return result.data.id;
 }
 
@@ -130,7 +128,6 @@ async function getMisGifos() {
     if (localStorage.getItem("misGifos") !== "[]") {
         empty.style.display = "none";
         let misGifosParsed = JSON.parse(localStorage.getItem("misGifos"));
-        console.log(misGifosParsed);
         for (let index = 0; index < misGifosParsed.length; index++) {
             const element = misGifosParsed[index];
             const pathGetGifs = `https://api.giphy.com/v1/gifs/${element}?api_key=${api_key}`;
@@ -140,7 +137,7 @@ async function getMisGifos() {
       <img class="gif" src="${json.data.images.original.url}" alt="${json.data.title}" />
       <div class="icons-card">
       <div class="iconFav itsFav" onclick='deleteGif("${json.data.id}")'></div>
-      <div class="iconDown"></div>
+      <div class="iconDown" onclick='downloadGif("${json.data.images.original.url}", "${json.data.slug}")'></div>
       <div class="iconMax" onclick='showModal("${json.data.id}")'></div>
       <div class="gifData">
       <p class= "userName">${json.data.username}</p>
@@ -150,9 +147,7 @@ async function getMisGifos() {
       </div>`;
             if (mediaQ769.matches) {
                 const trendCard = document.querySelector(".card");
-                console.log(trendCard);
                 trendCard.addEventListener("click", () => {
-                    console.log("click");
                     showModal(element.id);
                 });
             }
@@ -161,7 +156,7 @@ async function getMisGifos() {
 }
 if (misGifosCtn) {
     empty.style.display = "flex";
-    getMisGifos();
+    window.onload = getMisGifos();
 }
 // ELIMINAR MIS GIFOS------------------------------------------------
 function deleteGif(id) {

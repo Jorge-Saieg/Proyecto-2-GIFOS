@@ -16,7 +16,7 @@ const iconIG = document.getElementById("iconIG");
 
 const mediaQ = window.matchMedia("(min-width: 900px)");
 
-dark_button.addEventListener("click", () => {
+function darkMode() {
     document.body.classList.toggle("body-dark");
 
     if (dark_button.innerHTML === "Modo Nocturno") {
@@ -28,11 +28,14 @@ dark_button.addEventListener("click", () => {
         open_menu.src = "./images/burger-modo-noct.svg";
         close_menu.src = "./images/close-modo-noct.svg";
         crear_gifos.src = "./images/CTA-crear-gifo-modo-noc.svg";
-        lupa.src = "./images/icon-search-modo-noct.svg";
-        x.src = "./images/close-modo-noct.svg";
-        inputText.style.color = "white";
+        if (lupa) {
+            lupa.src = "./images/icon-search-modo-noct.svg";
+            x.src = "./images/close-modo-noct.svg";
+            inputText.style.color = "white";
+        };
         sliderL.src = "./images/button-slider-left-md-noct.svg";
         sliderR.src = "./images/button-slider-right-md-noct.svg";
+        localStorage.setItem("darkMode", "true");
     } else {
         menu.forEach((lista) => {
             if (mediaQ.matches) {
@@ -46,12 +49,24 @@ dark_button.addEventListener("click", () => {
         open_menu.src = "./images/burger.svg";
         close_menu.src = "./images/close.svg";
         crear_gifos.src = "./images/button-crear-gifo.svg";
-        lupa.src = "./images/icon-search.svg";
-        x.src = "./images/close.svg";
-        inputText.style.color = "black";
+        if (lupa) {
+            lupa.src = "./images/icon-search.svg";
+            x.src = "./images/close.svg";
+            inputText.style.color = "black";
+        };
         sliderL.src = "./images/button-slider-left.svg";
         sliderR.src = "./images/Button-Slider-right.svg";
+        localStorage.setItem("darkMode", "false");
     }
+}
+
+if (localStorage.getItem("darkMode") == null) {
+    localStorage.setItem("darkMode", "false");
+} else if (localStorage.getItem("darkMode") == "true") {
+    darkMode();
+}
+dark_button.addEventListener("click", () => {
+    darkMode();
 });
 
 // HOVERS------------------------------------------------------------
@@ -135,7 +150,6 @@ iconIG.addEventListener("mouseout", () => {
     iconIG.src = "./images/icon_instagram.svg";
 });
 
-
 // NAVBAR SHADOW
 
 const nav = document.getElementById("nav");
@@ -166,7 +180,10 @@ const empty = document.getElementById("empty");
 const mediaQ769 = window.matchMedia("(max-width: 769px)");
 const api_key = "Xv1G4X6o3HLfPnoSw180c8C1CERgqZ0h";
 async function getFavorites() {
-    if (localStorage.getItem("favoritos") !== "[]") {
+    if (
+        localStorage.getItem("favoritos") !== "[]" &&
+        localStorage.getItem("favoritos") !== null
+    ) {
         let favoritosParsed = JSON.parse(localStorage.getItem("favoritos"));
         for (let index = 0; index < favoritosParsed.length; index++) {
             const element = favoritosParsed[index];
@@ -177,7 +194,7 @@ async function getFavorites() {
       <img class="gif" src="${json.data.images.original.url}" alt="${json.data.title}" />
       <div class="icons-card">
       <div class="iconFav itsFav" onclick='deleteFav("${json.data.id}")'></div>
-      <div class="iconDown"></div>
+      <div class="iconDown" onclick='downloadGif("${json.data.images.original.url}", "${json.data.slug}")'></div>
       <div class="iconMax" onclick='showModal("${json.data.id}")'></div>
       <div class="gifData">
       <p class= "userName">${json.data.username}</p>
@@ -187,9 +204,7 @@ async function getFavorites() {
       </div>`;
             if (mediaQ769.matches) {
                 const trendCard = document.querySelector(".card");
-                console.log(trendCard);
                 trendCard.addEventListener("click", () => {
-                    console.log("click");
                     showModal(element.id);
                 });
             }
@@ -199,7 +214,7 @@ async function getFavorites() {
     }
 }
 if (favCtn) {
-    getFavorites();
+    window.onload = getFavorites();
 }
 // ELIMINAR FAVORITOS------------------------------------------------
 function deleteFav(id) {
@@ -218,7 +233,6 @@ async function showModal(id) {
     const pathGetById = `https://api.giphy.com/v1/gifs/${id}?api_key=${api_key}`;
     let = response = await fetch(pathGetById);
     let = json = await response.json();
-    console.log(json);
     modal.innerHTML = `<img id='maxGifX' class="maxGifX" src="./images/close.svg" alt="X">
       <img class="maxGifImg" src="${json.data.images.original.url}" alt="${json.data.title}">
       <div class="maxGifCtn">
@@ -228,7 +242,7 @@ async function showModal(id) {
         </div>
         <div class="maxGifButtons">
           <div><img id='maxGifFav' src="./images/icon-fav.svg" alt="Favorite" onclick='agregarFavorito("${id}")'></div>
-          <div><img id='maxGifDown' src="./images/icon-download.svg" alt="Down"></div>
+          <div><img id='maxGifDown' src="./images/icon-download.svg" alt="Down" onclick='downloadGif("${json.data.images.original.url}", "${json.data.slug}")'></div>
         </div>
       </div>`;
     const maxGifX = document.getElementById("maxGifX");
@@ -253,11 +267,15 @@ async function showModal(id) {
 
 // DESCARGAR GIFO----------------------------------------------------
 
-/* onclick='descargarGif("${element.images.original.url}", "${element.slug}")' */
-// async function descargarGif(gifUrl, gifNombre) {
-//   console.log('down');
-//   let blob = await fetch(gifUrl).then(img => img.blob());
-//   invokeSaveAsDialog(blob, gifNombre + ".gif");
-// }
-
-
+async function downloadGif(url, title) {
+    let response = await fetch(url);
+    let blob = response.blob();
+    let gif = URL.createObjectURL(await blob);
+    let save = document.createElement("a");
+    save.href = gif;
+    save.download = `${title}.gif`;
+    save.style.display = "none";
+    document.body.appendChild(save);
+    save.click();
+    document.body.removeChild(save);
+}

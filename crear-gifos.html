@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/style.css" />
   <title>GIFOS - Crear GIFO</title>
-  <link rel="shortcut icon" href="./images/logo-mobile.svg" type="image/x-icon" />
+  <link rel="shortcut icon" href="./images/logo-desktop.svg" type="image/x-icon" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         <li><a class="menuOption" href="./mis-gifos.html">Mis GIFOS</a></li>
         <li class="crear-gifo">
           <a href="./crear-gifos.html">
-            <img id="crear_gifos" src="./images/button-crear-gifo.svg" alt="" />
+            <img id="crear_gifos" src="./images/button-crear-gifo.svg" alt="Crear Gifo" />
           </a>
         </li>
       </ul>
@@ -53,6 +53,12 @@
           <p id="pCrear">¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
         </div>
         <div id="loading" class="loading">
+          <div class="btnsCtn" id="btnsCtn">
+            <div class="downBtn" id="downBtn" onclick='downloadGif("", "my_GIFO")'></div>
+            <a href="" target="_blank" title="Abrir en GIPHY" id="linkBtn">
+              <div class="linkBtn" ></div>
+            </a>
+          </div>
           <img id="loadingImg" src="./images/loader.svg" alt="Loading">
           <h5 id="loadingH5">Estamos subiendo tu GIFO</h5>
         </div>

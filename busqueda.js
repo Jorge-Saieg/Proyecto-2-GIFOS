@@ -11,13 +11,13 @@ const inputText = document.getElementById("inputText");
 const searchValue = document.getElementById("searchValue");
 const searchResults = document.getElementById("searchResults");
 const verMas = document.getElementById("verMas");
-const mediaQ769 = window.matchMedia("(max-width: 769px)");
-const api_key = "Xv1G4X6o3HLfPnoSw180c8C1CERgqZ0h";
+const itsMobile = window.matchMedia("(max-width: 769px)");
+const apikey = "Xv1G4X6o3HLfPnoSw180c8C1CERgqZ0h";
 
-// FOCUS IN OUT EVENTS-----------------------------------------------
+// FOCUS IN/OUT EVENTS-----------------------------------------------
 if (inputCtn != null) {
     inputCtn.addEventListener("focusin", () => {
-        if (mediaQ769.matches) {
+        if (itsMobile.matches) {
             h1.classList.add("hide");
             ilustraHeader.classList.add("hide");
             inputCtn.style.marginTop = "24px";
@@ -33,7 +33,7 @@ if (inputCtn != null) {
         }
     });
     inputCtn.addEventListener("focusout", () => {
-        if (mediaQ769.matches && !inputText.value) {
+        if (itsMobile.matches && !inputText.value) {
             h1.classList.remove("hide");
             ilustraHeader.classList.remove("hide");
             inputCtn.style.marginTop = "0px";
@@ -67,13 +67,11 @@ let offset = 0;
 async function getSearch(text) {
     try {
         inputText.value = text;
-        const pathSearch = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${text}&limit=12&offset=${offset}`;
+        const pathSearch = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${text}&limit=12&offset=${offset}`;
         let = response = await fetch(pathSearch);
         let = json = await response.json();
         if (json.data.length == 0) {
-            console.log(json.data);
             resultsCtn.innerHTML = "";
-            console.log(empty);
             empty.style.display = "flex";
         } else {
             resultsCtn.innerHTML = "";
@@ -83,7 +81,7 @@ async function getSearch(text) {
       <img class="gif" id="${element.id}" src="${element.images.original.url}" alt="${element.title}" />
       <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
-        <div class="iconDown"></div>
+        <div class="iconDown"onclick='downloadGif("${element.images.original.url}", "${element.slug}")'></div>
         <div class="iconMax" onclick='showModal("${element.id}")'></div>
         <div class="gifData">
           <p class= "userName">${element.username}</p>
@@ -91,11 +89,9 @@ async function getSearch(text) {
         </div>
       </div>
     </div>`;
-                if (mediaQ769.matches) {
+                if (itsMobile.matches) {
                     const trendCard = document.querySelector(".card");
-                    console.log(trendCard);
                     trendCard.addEventListener("click", () => {
-                        console.log("click");
                         showModal(element.id);
                     });
                 }
@@ -105,7 +101,7 @@ async function getSearch(text) {
         searchValue.innerText = inputText.value;
         searchResults.style.display = "block";
     } catch (error) {
-        console.log("ERROR EN LA BUSQUEDA:" + error);
+        console.log("ERROR EN LA BUSQUEDA: " + error);
     }
 }
 if (lupa != null) {
@@ -138,7 +134,7 @@ if (lupa != null) {
 
 async function showSuggestions() {
     try {
-        const pathSuggestions = `https://api.giphy.com/v1/gifs/search/tags?api_key=${api_key}&q=${inputText.value}&limit=4`;
+        const pathSuggestions = `https://api.giphy.com/v1/gifs/search/tags?apiKey=${apikey}&q=${inputText.value}&limit=4`;
         let = response = await fetch(pathSuggestions);
         let = json = await response.json();
         sugerencias.innerHTML = "";
@@ -147,14 +143,14 @@ async function showSuggestions() {
             sugerencias.innerHTML += `<li id="sugerencia${index}"><img src="./images/icon-search.svg" alt="Lupa" class="lupaSugerencias"><span id="textoSugg${index}" onclick="getSearch('${element.name}')">${element.name}</span></li>`;
         }
     } catch (error) {
-        console.log("ERROR EN LAS SUGERENCIAS");
+        console.log("ERROR EN LAS SUGERENCIAS: " + error);
     }
 }
 if (inputText != null) {
     inputText.addEventListener("keyup", function (event) {
         if (event.key !== "Enter") {
             /* aca quiero juntar todo en el mismo if */
-            if (!mediaQ769.matches) {
+            if (!itsMobile.matches) {
                 hrInput.style.display = "block";
                 sugerenciasDiv.style.display = "block";
             }

@@ -1,4 +1,3 @@
-
 // TRENDINGS---------------------------------------------------------
 
 const apiKey = "Xv1G4X6o3HLfPnoSw180c8C1CERgqZ0h";
@@ -22,7 +21,7 @@ async function getTrendings() {
      />
      <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
-        <div class="iconDown"></div>
+        <div class="iconDown"onclick='downloadGif("${element.images.original.url}", "${element.slug}")'></div>
         <div class="iconMax" onclick='showModal("${element.id}")'></div>
         <div class="gifData">
           <p class= "userName">${element.username}</p>
@@ -30,12 +29,8 @@ async function getTrendings() {
         </div>
      </div>`;
             if (mediaQ769.matches) {
-                const trendCard = document.querySelector(
-                    ".card"
-                ); /* (`trendCard${index}`) */
-                console.log(trendCard);
+                const trendCard = document.querySelector(".card");
                 trendCard.addEventListener("click", () => {
-                    console.log("click");
                     showModal(element.id);
                 });
             }
@@ -44,14 +39,13 @@ async function getTrendings() {
         console.log("ERROR EN LOS TRENDINGS Tipo: " + error);
     }
 }
-getTrendings();
+window.onload = getTrendings();
+
 if (sliderL !== null) {
     sliderL.addEventListener("click", () => {
-        console.log("holaL");
         imgs_ctn.scrollLeft -= 1200;
     });
     sliderR.addEventListener("click", () => {
-        console.log("holaR");
         imgs_ctn.scrollLeft += 1200;
     });
 }

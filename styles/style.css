@@ -14,10 +14,10 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  height: 95px;
+  height: 100px;
   border-top: solid 5px #572ee5;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   background-color: #ffffff;
 }
 
@@ -49,14 +49,14 @@ input:checked ~ .close-menu {
 
 .menu {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(87, 46, 229, 0.9);
   position: absolute;
   top: 100px;
   text-align: center;
   font-weight: bold;
   padding-top: 15px;
-  z-index: 20;
+  z-index: 10;
 }
 
 .menu li {
@@ -116,6 +116,7 @@ input:checked ~ .close-menu {
     top: 0px;
     margin-right: 156px;
     width: 487px;
+    height: 100%;
   }
   .menu li .menuOption {
     font-size: 13px;
@@ -278,9 +279,7 @@ input:checked ~ .close-menu {
 }
 
 .buscador p span:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  /* solo Safari y Firefox*/
+  color: #50e3c2;
 }
 
 .buscador .search-results {
@@ -301,7 +300,6 @@ input:checked ~ .close-menu {
 
 .buscador .search-results .empty {
   display: none;
-  /* va none, lo pongo el flex hasta q haga mis gifos */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -403,6 +401,7 @@ input:checked ~ .close-menu {
     position: sticky;
     top: 24px;
     width: 551px;
+    z-index: 20;
   }
   .buscador .input-ctn hr {
     display: none;
@@ -804,6 +803,40 @@ footer img {
   top: 20px;
   left: 84px;
   text-align: center;
+}
+
+.divCrearGifo .loading .btnsCtn {
+  width: 88px;
+  height: 46px;
+  position: absolute;
+  right: 0;
+  margin: 5px;
+  display: none;
+}
+
+.divCrearGifo .loading .btnsCtn .downBtn,
+.divCrearGifo .loading .btnsCtn .linkBtn {
+  margin: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.divCrearGifo .loading .btnsCtn .downBtn {
+  background-image: url("/images/icon-download.svg");
+}
+
+.divCrearGifo .loading .btnsCtn .downBtn:hover {
+  background-image: url("/images/icon-download-hover.svg");
+}
+
+.divCrearGifo .loading .btnsCtn .linkBtn {
+  background-image: url("/images/icon-link-normal.svg");
+}
+
+.divCrearGifo .loading .btnsCtn .linkBtn:hover {
+  background-image: url("/images/icon-link-hover.svg");
 }
 
 .divCrearGifo .loading img {

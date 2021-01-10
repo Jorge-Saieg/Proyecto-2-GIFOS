@@ -32,6 +32,7 @@
     }
     .loading {
         display: none;
+        // display: block;
         width: 518px;
         height: 345px;
         background-color: #562ee594;
@@ -39,11 +40,40 @@
         top: 20px;
         left: 84px;
         text-align: center;
+        .btnsCtn {
+            width: 88px;
+            height: 46px;
+            position: absolute;
+            right: 0;
+            margin: 5px;
+            display: none;
+            // display: flex;
+            .downBtn,
+            .linkBtn {
+                margin: 5px;
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+            .downBtn {
+                background-image: url("/images/icon-download.svg");
+                &:hover {
+                    background-image: url("/images/icon-download-hover.svg");
+                }
+            }
+            .linkBtn {
+                background-image: url("/images/icon-link-normal.svg");
+                &:hover {
+                    background-image: url("/images/icon-link-hover.svg");
+                }
+            }
+        }
         img {
             margin-top: 122px;
         }
         h5 {
-          font-size: 15px;
+            font-size: 15px;
             margin-top: 10px;
             color: white;
         }
@@ -140,4 +170,3 @@
         color: white;
     }
 }
-

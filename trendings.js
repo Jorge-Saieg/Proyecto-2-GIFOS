@@ -12,7 +12,7 @@ async function getTrendings() {
         let = json = await response.json();
         for (let index = 0; index < json.data.length; index++) {
             const element = json.data[index];
-            imgs_ctn.innerHTML += `<div class="card">
+            imgs_ctn.innerHTML += `<div class="card" onclick='showModalMobile("${element.id}")'>
      <img
        class="gif"
        src="${element.images.original.url}" 
@@ -28,12 +28,6 @@ async function getTrendings() {
           <h4 class="gifTitle">${element.title}</h4>
         </div>
      </div>`;
-            if (mediaQ769.matches) {
-                const trendCard = document.querySelector(".card");
-                trendCard.addEventListener("click", () => {
-                    showModal(element.id);
-                });
-            }
         }
     } catch (error) {
         console.log("ERROR EN LOS TRENDINGS Tipo: " + error);

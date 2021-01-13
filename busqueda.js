@@ -1,4 +1,3 @@
-
 // ------------------------------BUSQUEDA----------------------------
 const inputCtn = document.getElementById("inputCtn");
 const resultsCtn = document.getElementById("resultsCtn");
@@ -77,7 +76,7 @@ async function getSearch(text) {
             resultsCtn.innerHTML = "";
             for (let index = 0; index < json.data.length; index++) {
                 const element = json.data[index];
-                resultsCtn.innerHTML += `<div class="card">
+                resultsCtn.innerHTML += `<div class="card" onclick='showModalMobile("${element.id}")'>
       <img class="gif" id="${element.id}" src="${element.images.original.url}" alt="${element.title}" />
       <div class="icons-card">
         <div class="iconFav" onclick='agregarFavorito("${element.id}")'></div>
@@ -89,12 +88,6 @@ async function getSearch(text) {
         </div>
       </div>
     </div>`;
-                if (itsMobile.matches) {
-                    const trendCard = document.querySelector(".card");
-                    trendCard.addEventListener("click", () => {
-                        showModal(element.id);
-                    });
-                }
             }
         }
 

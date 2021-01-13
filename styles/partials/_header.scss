@@ -58,14 +58,14 @@ input:checked ~ .close-menu {
             text-decoration: none;
             color: white;
         }
-    }
-    hr {
-        width: 41px;
-        height: 0.1px;
-        margin: auto;
-        border: 1px solid #ffffff;
-        background-color: #ffffff;
-        opacity: 0.5;
+        hr {
+            width: 41px;
+            height: 0.1px;
+            margin: auto;
+            border: 1px solid #ffffff;
+            background-color: #ffffff;
+            opacity: 0.5;
+        }
     }
     .crear-gifo {
         display: none;
@@ -113,7 +113,6 @@ input:checked ~ .close-menu {
                 &:hover {
                     text-decoration-line: underline;
                     text-decoration-color: #00f3bb;
-                    text-decoration-thickness: 1.5px; /* solo Safari y Firefox*/
                 }
                 &:active {
                     text-decoration: none;

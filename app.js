@@ -32,7 +32,7 @@ function darkMode() {
             lupa.src = "./images/icon-search-modo-noct.svg";
             x.src = "./images/close-modo-noct.svg";
             inputText.style.color = "white";
-        };
+        }
         sliderL.src = "./images/button-slider-left-md-noct.svg";
         sliderR.src = "./images/button-slider-right-md-noct.svg";
         localStorage.setItem("darkMode", "true");
@@ -53,7 +53,7 @@ function darkMode() {
             lupa.src = "./images/icon-search.svg";
             x.src = "./images/close.svg";
             inputText.style.color = "black";
-        };
+        }
         sliderL.src = "./images/button-slider-left.svg";
         sliderR.src = "./images/Button-Slider-right.svg";
         localStorage.setItem("darkMode", "false");
@@ -190,7 +190,7 @@ async function getFavorites() {
             const pathGetFavs = `https://api.giphy.com/v1/gifs/${element}?api_key=${api_key}`;
             let = response = await fetch(pathGetFavs);
             let = json = await response.json();
-            favCtn.innerHTML += `<div class="card">
+            favCtn.innerHTML += `<div class="card" onclick='showModalMobile("${json.data.id}")'>
       <img class="gif" src="${json.data.images.original.url}" alt="${json.data.title}" />
       <div class="icons-card">
       <div class="iconFav itsFav" onclick='deleteFav("${json.data.id}")'></div>
@@ -202,12 +202,6 @@ async function getFavorites() {
       </div>
       </div>
       </div>`;
-            if (mediaQ769.matches) {
-                const trendCard = document.querySelector(".card");
-                trendCard.addEventListener("click", () => {
-                    showModal(element.id);
-                });
-            }
         }
     } else {
         empty.style.display = "flex";
@@ -263,6 +257,13 @@ async function showModal(id) {
     maxGifDown.addEventListener("mouseout", () => {
         maxGifDown.src = "./images/icon-download.svg";
     });
+}
+
+// MODAL en mobile
+function showModalMobile(id) {
+    if (mediaQ769.matches) {
+        showModal(id);
+    }
 }
 
 // DESCARGAR GIFO----------------------------------------------------

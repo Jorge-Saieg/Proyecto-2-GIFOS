@@ -69,7 +69,7 @@ input:checked ~ .close-menu {
   color: white;
 }
 
-.menu hr {
+.menu li hr {
   width: 41px;
   height: 0.1px;
   margin: auto;
@@ -129,8 +129,6 @@ input:checked ~ .close-menu {
             text-decoration-line: underline;
     -webkit-text-decoration-color: #00f3bb;
             text-decoration-color: #00f3bb;
-    text-decoration-thickness: 1.5px;
-    /* solo Safari y Firefox*/
   }
   .menu li .menuOption:active {
     text-decoration: none;
@@ -583,7 +581,6 @@ input:checked ~ .close-menu {
   overflow: auto;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .trending .trending-img-ctn .imgs-ctn::-webkit-scrollbar {

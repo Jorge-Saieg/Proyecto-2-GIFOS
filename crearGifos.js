@@ -24,7 +24,6 @@ let blob;
 let form = new FormData();
 let arrayMisGifos = [];
 
-
 function getStreamAndRecord() {
     navigator.mediaDevices
         .getUserMedia({
@@ -56,7 +55,6 @@ function getStreamAndRecord() {
         });
 }
 if (comenzarButton) {
-    
     comenzarButton.addEventListener("click", () => {
         h2Crear.innerHTML = "¿Nos das acceso a tu cámara?";
         pCrear.innerHTML =
@@ -67,40 +65,40 @@ if (comenzarButton) {
         getStreamAndRecord();
     });
 
-grabarButton.addEventListener("click", () => {
-    grabarButton.style.display = "none";
-    finalizarButton.style.display = "block";
+    grabarButton.addEventListener("click", () => {
+        grabarButton.style.display = "none";
+        finalizarButton.style.display = "block";
 
-    recorder.startRecording();
-});
-
-finalizarButton.addEventListener("click", () => {
-    recorder.stopRecording(() => {
-        blob = recorder.getBlob();
-        var uri = URL.createObjectURL(blob);
-        video.style.display = "none";
-        gifCreado.style.display = "block";
-        gifCreado.src = uri;
-        form.append("file", blob, "myGif.gif");
-        finalizarButton.style.display = "none";
-        subirGifoButton.style.display = "block";
+        recorder.startRecording();
     });
-});
 
-subirGifoButton.addEventListener("click", async () => {
-    loading.style.display = "block";
-    pasoDos.style.backgroundColor = "white";
-    pasoDos.style.color = "#572ee5";
-    pasoTres.style.backgroundColor = "#572ee5";
-    pasoTres.style.color = "white";
-    let idCreated = await createGif(form);
-    arrayMisGifos.push(idCreated);
-    localStorage.setItem("misGifos", JSON.stringify(arrayMisGifos));
-    linkBtn.href = `https://media.giphy.com/media/${idCreated}/giphy.gif`;
-    loadingImg.src = "./images/check.svg";
-    loadingH5.innerHTML = "GIFO subido con éxito";
-    btnsCtn.style.display = 'flex';
-});
+    finalizarButton.addEventListener("click", () => {
+        recorder.stopRecording(() => {
+            blob = recorder.getBlob();
+            var uri = URL.createObjectURL(blob);
+            video.style.display = "none";
+            gifCreado.style.display = "block";
+            gifCreado.src = uri;
+            form.append("file", blob, "myGif.gif");
+            finalizarButton.style.display = "none";
+            subirGifoButton.style.display = "block";
+        });
+    });
+
+    subirGifoButton.addEventListener("click", async () => {
+        loading.style.display = "block";
+        pasoDos.style.backgroundColor = "white";
+        pasoDos.style.color = "#572ee5";
+        pasoTres.style.backgroundColor = "#572ee5";
+        pasoTres.style.color = "white";
+        let idCreated = await createGif(form);
+        arrayMisGifos.push(idCreated);
+        localStorage.setItem("misGifos", JSON.stringify(arrayMisGifos));
+        linkBtn.href = `https://media.giphy.com/media/${idCreated}/giphy.gif`;
+        loadingImg.src = "./images/check.svg";
+        loadingH5.innerHTML = "GIFO subido con éxito";
+        btnsCtn.style.display = "flex";
+    });
 }
 
 const pathUpload = `https://upload.giphy.com/v1/gifs?api_key=${api_key}`;
@@ -114,13 +112,13 @@ async function createGif(formData) {
     return result.data.id;
 }
 
-
 // MOSTRAR MIS GIFOS
-
 
 if (localStorage.getItem("misGifos") !== null) {
     arrayMisGifos = JSON.parse(localStorage.getItem("misGifos"));
-};
+} else {
+    localStorage.setItem("misGifos", "[]");
+}
 
 const misGifosCtn = document.getElementById("misGifosCtn");
 
@@ -133,7 +131,7 @@ async function getMisGifos() {
             const pathGetGifs = `https://api.giphy.com/v1/gifs/${element}?api_key=${api_key}`;
             let = response = await fetch(pathGetGifs);
             let = json = await response.json();
-            misGifosCtn.innerHTML += `<div class="card">
+            misGifosCtn.innerHTML += `<div class="card" onclick='showModalMobile("${element.id}")'>
       <img class="gif" src="${json.data.images.original.url}" alt="${json.data.title}" />
       <div class="icons-card">
       <div class="iconFav itsFav" onclick='deleteGif("${json.data.id}")'></div>
@@ -145,12 +143,6 @@ async function getMisGifos() {
       </div>
       </div>
       </div>`;
-            if (mediaQ769.matches) {
-                const trendCard = document.querySelector(".card");
-                trendCard.addEventListener("click", () => {
-                    showModal(element.id);
-                });
-            }
         }
     }
 }

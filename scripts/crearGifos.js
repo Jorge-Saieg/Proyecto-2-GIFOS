@@ -95,7 +95,7 @@ if (comenzarButton) {
         arrayMisGifos.push(idCreated);
         localStorage.setItem("misGifos", JSON.stringify(arrayMisGifos));
         linkBtn.href = `https://media.giphy.com/media/${idCreated}/giphy.gif`;
-        loadingImg.src = "./images/check.svg";
+        loadingImg.src = "../images/check.svg";
         loadingH5.innerHTML = "GIFO subido con éxito";
         btnsCtn.style.display = "flex";
     });

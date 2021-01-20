@@ -26,9 +26,9 @@ if (inputCtn != null) {
         lupa.style.left = "20px";
         x.style.display = "block";
         if (dark_button.innerHTML === "Modo Nocturno") {
-            x.src = "./images/close.svg";
+            x.src = "../images/close.svg";
         } else {
-            x.src = "./images/close-modo-noct.svg";
+            x.src = "../images/close-modo-noct.svg";
         }
     });
     inputCtn.addEventListener("focusout", () => {
@@ -43,9 +43,9 @@ if (inputCtn != null) {
         if (!inputText.value) {
             lupa.style.display = "none";
             if (dark_button.innerHTML === "Modo Nocturno") {
-                x.src = "./images/icon-search.svg";
+                x.src = "../images/icon-search.svg";
             } else {
-                x.src = "./images/icon-search-modo-noct.svg";
+                x.src = "../images/icon-search-modo-noct.svg";
             }
         }
     });

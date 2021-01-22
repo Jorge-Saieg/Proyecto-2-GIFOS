@@ -57,15 +57,15 @@
                 cursor: pointer;
             }
             .downBtn {
-                background-image: url("/images/icon-download.svg");
+                background-image: url("../images/icon-download.svg");
                 &:hover {
-                    background-image: url("/images/icon-download-hover.svg");
+                    background-image: url("../images/icon-download-hover.svg");
                 }
             }
             .linkBtn {
-                background-image: url("/images/icon-link-normal.svg");
+                background-image: url("../images/icon-link-normal.svg");
                 &:hover {
-                    background-image: url("/images/icon-link-hover.svg");
+                    background-image: url("..images/icon-link-hover.svg");
                 }
             }
         }

@@ -275,27 +275,27 @@
                                 cursor: pointer;
                             }
                             .iconFav {
-                                background-image: url("/images/icon-fav.svg");
+                                background-image: url("../images/icon-fav.svg");
                                 &:hover {
-                                    background-image: url("/images/icon-fav-hover.svg");
+                                    background-image: url("../images/icon-fav-hover.svg");
                                 }
                             }
                             .itsFav {
-                                background-image: url("/images/icon-trash-normal.svg");
+                                background-image: url("../images/icon-trash-normal.svg");
                                 &:hover {
-                                    background-image: url("/images/icon-trash-hover.svg");
+                                    background-image: url("../images/icon-trash-hover.svg");
                                 }
                             }
                             .iconDown {
-                                background-image: url("/images/icon-download.svg");
+                                background-image: url("../images/icon-download.svg");
                                 &:hover {
-                                    background-image: url("/images/icon-download-hover.svg");
+                                    background-image: url("../images/icon-download-hover.svg");
                                 }
                             }
                             .iconMax {
-                                background-image: url("/images/icon-max-normal.svg");
+                                background-image: url("../images/icon-max-normal.svg");
                                 &:hover {
-                                    background-image: url("/images/icon-max-hover.svg");
+                                    background-image: url("../images/icon-max-hover.svg");
                                 }
                             }
                             .gifData {

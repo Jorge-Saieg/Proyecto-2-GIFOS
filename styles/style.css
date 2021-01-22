@@ -487,28 +487,28 @@ input:checked ~ .close-menu {
     cursor: pointer;
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconFav {
-    background-image: url("/images/icon-fav.svg");
+    background-image: url("../images/icon-fav.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconFav:hover {
-    background-image: url("/images/icon-fav-hover.svg");
+    background-image: url("../images/icon-fav-hover.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .itsFav {
-    background-image: url("/images/icon-trash-normal.svg");
+    background-image: url("../images/icon-trash-normal.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .itsFav:hover {
-    background-image: url("/images/icon-trash-hover.svg");
+    background-image: url("../images/icon-trash-hover.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconDown {
-    background-image: url("/images/icon-download.svg");
+    background-image: url("../images/icon-download.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconDown:hover {
-    background-image: url("/images/icon-download-hover.svg");
+    background-image: url("../images/icon-download-hover.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconMax {
-    background-image: url("/images/icon-max-normal.svg");
+    background-image: url("../images/icon-max-normal.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .iconMax:hover {
-    background-image: url("/images/icon-max-hover.svg");
+    background-image: url("../images/icon-max-hover.svg");
   }
   .buscador .search-results .results-ctn .card:hover .icons-card .gifData {
     position: absolute;
@@ -673,16 +673,16 @@ input:checked ~ .close-menu {
     background-image: url("../images/icon-fav-hover.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown {
-    background-image: url("/images/icon-download.svg");
+    background-image: url("../images/icon-download.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown:hover {
-    background-image: url("/images/icon-download-hover.svg");
+    background-image: url("../images/icon-download-hover.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconMax {
-    background-image: url("/images/icon-max-normal.svg");
+    background-image: url("../images/icon-max-normal.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconMax:hover {
-    background-image: url("/images/icon-max-hover.svg");
+    background-image: url("../images/icon-max-hover.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .gifData {
     position: absolute;
@@ -821,19 +821,19 @@ footer img {
 }
 
 .divCrearGifo .loading .btnsCtn .downBtn {
-  background-image: url("/images/icon-download.svg");
+  background-image: url("../images/icon-download.svg");
 }
 
 .divCrearGifo .loading .btnsCtn .downBtn:hover {
-  background-image: url("/images/icon-download-hover.svg");
+  background-image: url("../images/icon-download-hover.svg");
 }
 
 .divCrearGifo .loading .btnsCtn .linkBtn {
-  background-image: url("/images/icon-link-normal.svg");
+  background-image: url("../images/icon-link-normal.svg");
 }
 
 .divCrearGifo .loading .btnsCtn .linkBtn:hover {
-  background-image: url("/images/icon-link-hover.svg");
+  background-image: url("..images/icon-link-hover.svg");
 }
 
 .divCrearGifo .loading img {

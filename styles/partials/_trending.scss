@@ -102,15 +102,15 @@
               }
 
               .iconDown {
-                background-image: url("/images/icon-download.svg");
+                background-image: url("../images/icon-download.svg");
                 &:hover {
-                  background-image: url("/images/icon-download-hover.svg");
+                  background-image: url("../images/icon-download-hover.svg");
                 }
               }
               .iconMax {
-                background-image: url("/images/icon-max-normal.svg");
+                background-image: url("../images/icon-max-normal.svg");
                 &:hover {
-                  background-image: url("/images/icon-max-hover.svg");
+                  background-image: url("../images/icon-max-hover.svg");
                 }
               }
               .gifData {

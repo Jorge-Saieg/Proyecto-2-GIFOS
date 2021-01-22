@@ -667,10 +667,10 @@ input:checked ~ .close-menu {
     cursor: pointer;
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconFav {
-    background-image: url("/images/icon-fav.svg");
+    background-image: url("../images/icon-fav.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconFav:hover {
-    background-image: url("/images/icon-fav-hover.svg");
+    background-image: url("../images/icon-fav-hover.svg");
   }
   .trending .trending-img-ctn .imgs-ctn .card:hover .icons-card .iconDown {
     background-image: url("/images/icon-download.svg");

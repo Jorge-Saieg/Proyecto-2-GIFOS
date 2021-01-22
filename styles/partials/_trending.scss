@@ -95,9 +95,9 @@
                 cursor: pointer;
               }
               .iconFav {
-                background-image: url("/images/icon-fav.svg");
+                background-image: url("../images/icon-fav.svg");
                 &:hover {
-                  background-image: url("/images/icon-fav-hover.svg");
+                  background-image: url("../images/icon-fav-hover.svg");
                 }
               }
 

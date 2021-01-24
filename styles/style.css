@@ -833,7 +833,7 @@ footer img {
 }
 
 .divCrearGifo .loading .btnsCtn .linkBtn:hover {
-  background-image: url("..images/icon-link-hover.svg");
+  background-image: url("../images/icon-link-hover.svg");
 }
 
 .divCrearGifo .loading img {

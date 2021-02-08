@@ -73,6 +73,7 @@ async function getSearch(text) {
             resultsCtn.innerHTML = "";
             empty.style.display = "flex";
         } else {
+            empty.style.display = "none";
             resultsCtn.innerHTML = "";
             for (let index = 0; index < json.data.length; index++) {
                 const element = json.data[index];
